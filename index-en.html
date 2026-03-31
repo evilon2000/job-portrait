@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>个人开发画像 | 后端求职主页</title>
-  <meta name="description" content="聚焦 .NET 与 Java 两条独立技术线的个人开发画像与求职技术总结。" />
+  <title>Developer Profile | Backend Career Page</title>
+  <meta name="description" content="Backend career landing page with separate .NET and Java capability portraits." />
   <style>
     :root {
       --bg: #07111b;
@@ -16,7 +16,6 @@
       --blue: #38bdf8;
       --green: #22c55e;
       --sand: #f0c98a;
-      --warn: #fb7185;
     }
 
     * { box-sizing: border-box; }
@@ -24,7 +23,7 @@
     body {
       margin: 0;
       color: var(--text);
-      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       background:
         radial-gradient(circle at 12% 18%, rgba(56, 189, 248, 0.18), transparent 28%),
         radial-gradient(circle at 88% 12%, rgba(34, 197, 94, 0.15), transparent 24%),
@@ -59,7 +58,7 @@
       flex-wrap: wrap;
     }
 
-    .topbar .tag {
+    .tag {
       display: inline-flex;
       gap: 8px;
       align-items: center;
@@ -98,27 +97,8 @@
       backdrop-filter: blur(10px);
     }
 
-    .hero {
-      padding: 34px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: -40px;
-      top: -50px;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.14), transparent 68%);
-    }
-
-    .section {
-      padding: 22px;
-      margin-top: 18px;
-    }
+    .hero { padding: 34px; }
+    .section { padding: 22px; margin-top: 18px; }
 
     h1 {
       margin: 12px 0;
@@ -156,16 +136,10 @@
       color: #c9f6ff;
     }
 
-    .stats,
     .grid-2,
     .grid-3 {
       display: grid;
       gap: 14px;
-    }
-
-    .stats {
-      margin-top: 22px;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
     }
 
     .grid-2 {
@@ -181,18 +155,6 @@
       border: 1px solid rgba(125, 211, 252, 0.1);
       border-radius: 18px;
       padding: 16px;
-    }
-
-    .stat-num {
-      font-size: 26px;
-      font-weight: 700;
-      color: #f8fbff;
-    }
-
-    .stat-label {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 13px;
     }
 
     h2 {
@@ -235,16 +197,6 @@
       background: rgba(240, 201, 138, 0.08);
     }
 
-    .split {
-      border-left: 3px solid rgba(56, 189, 248, 0.35);
-      padding-left: 12px;
-    }
-
-    .warn {
-      border-left: 3px solid rgba(251, 113, 133, 0.45);
-      padding-left: 12px;
-    }
-
     footer {
       margin-top: 16px;
       text-align: right;
@@ -265,58 +217,40 @@
     <div class="topbar">
       <div class="tag">Backend Career Profile</div>
       <div class="lang">
-        <a class="active" href="./index.html">中文</a>
-        <a href="./index-en.html">EN</a>
+        <a href="./index.html">中文</a>
+        <a class="active" href="./index-en.html">EN</a>
       </div>
     </div>
 
     <section class="hero">
-      <h1>个人开发画像与后端求职主页</h1>
+      <h1>Developer Profile and Backend Career Landing Page</h1>
       <p class="summary">
-        这份主页不是把所有项目混在一起展示，而是把能力明确拆成两条独立技术线：`.NET` 强调个人开发、业务落地、稳定交付与良好编码习惯；`Java` 强调团队协作、平台后端、复杂业务建模与多模块系统推进。这样的表达方式更接近真实履历，也更利于针对不同岗位进行精准投递。
+        This page separates capability presentation into two independent tracks instead of mixing everything together: `.NET` focuses on personal delivery, business implementation, stability, and disciplined coding habits; `Java` focuses on team collaboration, platform backend work, complex domain modeling, and multi-module systems. This structure is closer to a real hiring narrative.
       </p>
       <div class="actions">
-        <a class="primary" href="./personal-dev-portrait.html">查看 .NET 个人画像</a>
-        <a href="./java-team-dev-portrait.html">查看 Java 团队画像</a>
-        <a href="https://github.com/evilon2000/job-portrait">查看 GitHub 仓库</a>
-      </div>
-      <div class="stats">
-        <article class="card">
-          <div class="stat-num">2</div>
-          <div class="stat-label">独立技术画像页面</div>
-        </article>
-        <article class="card">
-          <div class="stat-num">.NET</div>
-          <div class="stat-label">个人开发与交付导向</div>
-        </article>
-        <article class="card">
-          <div class="stat-num">Java</div>
-          <div class="stat-label">团队协作与平台建设导向</div>
-        </article>
-        <article class="card">
-          <div class="stat-num">Pages</div>
-          <div class="stat-label">可直接对外展示的静态主页</div>
-        </article>
+        <a class="primary" href="./personal-dev-portrait.html">View .NET Profile</a>
+        <a href="./java-team-dev-portrait.html">View Java Profile</a>
+        <a href="https://github.com/evilon2000/job-portrait">View GitHub Repo</a>
       </div>
     </section>
 
     <section class="section">
-      <h2>技术定位</h2>
+      <h2>Positioning</h2>
       <div class="grid-2">
-        <article class="card split">
-          <h3>.NET 方向</h3>
+        <article class="card">
+          <h3>.NET Track</h3>
           <ul>
-            <li>偏个人开发与完整交付，具备较强的自驱推进能力。</li>
-            <li>适合中后台、管理系统、业务支撑系统和轻量 SaaS 场景。</li>
-            <li>编码习惯相对稳定，能从个人开发自然过渡到大平台协作开发。</li>
+            <li>Personal delivery oriented.</li>
+            <li>Strong fit for business systems, admin platforms, and lightweight SaaS delivery.</li>
+            <li>Stable coding habits with the ability to integrate into larger engineering environments.</li>
           </ul>
         </article>
-        <article class="card split">
-          <h3>Java 方向</h3>
+        <article class="card">
+          <h3>Java Track</h3>
           <ul>
-            <li>偏团队协作与平台型后端，覆盖农业 SaaS、GIS、社区治理、流程与统计类系统。</li>
-            <li>能处理多模块项目、复杂业务模型、权限边界、数据组织和接口推进。</li>
-            <li>更适合表达为“业务平台型工程师”，而不是单点框架型开发者。</li>
+            <li>Team collaboration and platform backend oriented.</li>
+            <li>Experience across agriculture SaaS, GIS, community governance, workflow, and analytics systems.</li>
+            <li>Stronger fit for complex domain modeling, service orchestration, and business platform development.</li>
           </ul>
         </article>
       </div>
@@ -327,63 +261,44 @@
         <span class="chip">MyBatis / MyBatis-Plus</span>
         <span class="chip">SaaS</span>
         <span class="chip">GIS</span>
-        <span class="chip">Shiro / Sa-Token</span>
-        <span class="chip">中后台平台</span>
+        <span class="chip">Backend Platform</span>
       </div>
     </section>
 
     <section class="section">
-      <h2>求职表达重点</h2>
+      <h2>What This Profile Emphasizes</h2>
       <div class="grid-3">
         <article class="card">
-          <h3>业务理解</h3>
-          <p>能读懂并推进真实业务系统，不只会搭框架或写基础 CRUD。</p>
+          <h3>Business Delivery</h3>
+          <p>Not only framework usage, but actual business-facing system implementation and delivery.</p>
         </article>
         <article class="card">
-          <h3>结构意识</h3>
-          <p>会区分核心业务、模板代码、二开污染与可复用能力沉淀。</p>
+          <h3>Architecture Judgment</h3>
+          <p>Ability to distinguish reusable engineering structure from template pollution and weak project hygiene.</p>
         </article>
         <article class="card">
-          <h3>维护视角</h3>
-          <p>对权限边界、巨型 Service、仓库污染、老项目技术债有明确判断。</p>
+          <h3>Maintenance Awareness</h3>
+          <p>Clear sensitivity to large services, permission boundaries, repository clutter, and legacy technical debt.</p>
         </article>
       </div>
     </section>
 
     <section class="section">
-      <h2>适合岗位</h2>
+      <h2>Target Roles</h2>
       <div class="grid-2">
         <article class="card">
-          <h3>优先岗位</h3>
+          <h3>Suitable Roles</h3>
           <ul>
-            <li>.NET 后端工程师</li>
-            <li>Java 后端工程师</li>
-            <li>业务平台开发工程师</li>
-            <li>SaaS / 中后台 / 政企系统研发工程师</li>
+            <li>.NET Backend Engineer</li>
+            <li>Java Backend Engineer</li>
+            <li>Business Platform Engineer</li>
+            <li>SaaS / Enterprise Backend Engineer</li>
           </ul>
         </article>
         <article class="card">
-          <h3>更合适的形象</h3>
-          <p>工程型开发者、业务平台型后端、交付导向研发，而不是单纯算法竞赛型或只会脚手架的框架型工程师。</p>
+          <h3>Best Fit</h3>
+          <p>An engineering-oriented backend developer with delivery awareness and business structure judgment, rather than a purely algorithm-focused or template-driven profile.</p>
         </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>投递建议</h2>
-      <div class="grid-2">
-        <article class="card">
-          <h3>投 .NET 岗位</h3>
-          <p>优先发首页，再补发 `.NET` 个人画像页，突出个人交付、业务实现与编码习惯。</p>
-        </article>
-        <article class="card">
-          <h3>投 Java 岗位</h3>
-          <p>优先发首页，再补发 `Java` 团队画像页，突出团队协作、平台项目与复杂业务推进能力。</p>
-        </article>
-      </div>
-      <div class="card warn" style="margin-top:14px;">
-        <h3>说明</h3>
-        <p>当前页面只展示技术画像与求职定位，不主动添加联系方式、简历编号或项目夸张描述，避免无事实依据的信息污染展示内容。</p>
       </div>
       <footer>Generated from local code wiki and published via GitHub Pages</footer>
     </section>
