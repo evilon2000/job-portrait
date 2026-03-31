@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>风格代码样本 | Signature Code Samples</title>
+  <meta name="description" content="精选 .NET 与 Java 代表代码样本，突出结构化思维、业务抽象与平台型后端能力。" />
+  <style>
+    :root {
+      --bg: #08111f;
+      --panel: rgba(9, 18, 31, 0.82);
+      --card: rgba(14, 25, 42, 0.85);
+      --line: rgba(148, 163, 184, 0.16);
+      --text: #e6eef7;
+      --muted: #9aabbe;
+      --blue: #38bdf8;
+      --green: #22c55e;
+      --sand: #f0c98a;
+      --red: #fb7185;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at 14% 16%, rgba(56, 189, 248, 0.18), transparent 26%),
+        radial-gradient(circle at 88% 14%, rgba(34, 197, 94, 0.12), transparent 24%),
+        linear-gradient(150deg, #030712, #08111f 42%, #0f1d33);
+      min-height: 100vh;
+    }
+
+    .mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 92%);
+    }
+
+    .wrap {
+      width: min(1180px, 92vw);
+      margin: 28px auto 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: rgba(15, 23, 42, 0.7);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .hero,
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero { padding: 32px; }
+    .section { padding: 22px; margin-top: 18px; }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b8f3cf;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    h1 {
+      margin: 14px 0 12px;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.05;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(125, 211, 252, 0.1);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #f8fbff;
+    }
+
+    p,
+    li {
+      line-height: 1.8;
+      color: #dbe6f1;
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .tagline {
+      color: var(--sand);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #f7deb1;
+      border: 1px solid rgba(240, 201, 138, 0.22);
+      background: rgba(240, 201, 138, 0.08);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .actions a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.72);
+      font-size: 13px;
+    }
+
+    .actions a.primary {
+      border-color: rgba(56, 189, 248, 0.42);
+      background: rgba(14, 116, 144, 0.22);
+      color: #c9f6ff;
+    }
+
+    .accent-blue { border-left: 3px solid rgba(56, 189, 248, 0.45); }
+    .accent-green { border-left: 3px solid rgba(34, 197, 94, 0.45); }
+    .accent-red { border-left: 3px solid rgba(251, 113, 133, 0.45); }
+
+    footer {
+      margin-top: 16px;
+      text-align: right;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .wrap { margin-top: 18px; }
+      .hero, .section { padding: 16px; border-radius: 18px; }
+      .lead { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="mesh"></div>
+  <main class="wrap">
+    <nav class="nav">
+      <a href="../index.html">返回主页</a>
+      <a href="../personal-dev-portrait.html">.NET 画像</a>
+      <a href="../java-team-dev-portrait.html">Java 画像</a>
+      <a href="https://github.com/evilon2000/job-portrait">GitHub 仓库</a>
+    </nav>
+
+    <section class="hero">
+      <div class="eyebrow">Signature Samples</div>
+      <h1>让面试官先看到最有辨识度的代码</h1>
+      <p class="lead">
+        这里不展示整仓源码，而是只展示最能代表个人风格的精选样本。`.NET` 看结构化抽象、表达式拼装、规则与流程建模；`Java` 看平台型后端、区域隔离、GIS 集成、工作流查询与跨系统编排。目的不是证明“写过很多代码”，而是让对方快速判断“你是怎样组织复杂系统的”。 
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>.NET 精选 3 项</h2>
+      <div class="grid-3">
+        <article class="card accent-blue">
+          <div class="tagline">Signature #1</div>
+          <h3>GlobalQueryFilterInfrastructure.cs</h3>
+          <p>把默认数据过滤规则沉到 EF Core 基础设施层，而不是散落在业务查询里。这个样本最能体现你“先立边界、再放业务”的习惯。</p>
+          <div class="chips">
+            <span class="chip">EF Core</span>
+            <span class="chip">Global Filter</span>
+            <span class="chip">Infrastructure</span>
+          </div>
+          <div class="actions">
+            <a class="primary" href="https://github.com/evilon2000/job-portrait/blob/main/style-code/dotnet/code/GlobalQueryFilterInfrastructure.cs">看代码</a>
+            <a href="https://github.com/evilon2000/job-portrait/blob/main/style-code/dotnet/notes/GlobalQueryFilterInfrastructure.md">看说明</a>
+          </div>
+        </article>
+        <article class="card accent-green">
+          <div class="tagline">Signature #2</div>
+          <h3>RuleEnginePredicateCompiler.cs</h3>
+          <p>把规则结构与执行机制拆开，用表达式树做规则编译。这类代码很容易让面试官看到你不是只会业务 CRUD，而是会组织可组合规则。</p>
+          <div class="chips">
+            <span class="chip">Expression</span>
+            <span class="chip">Rule Engine</span>
+            <span class="chip">Abstraction</span>
+          </div>
+          <div class="actions">
+            <a class="primary" href="https://github.com/evilon2000/job-portrait/blob/main/style-code/dotnet/code/RuleEnginePredicateCompiler.cs">看代码</a>
+            <a href="https://github.com/evilon2000/job-portrait/blob/main/style-code/dotnet/notes/RuleEnginePredicateCompiler.md">看说明</a>
+          </div>
+        </article>
+        <article class="card accent-red">
+          <div class="tagline">Signature #3</div>
+          <h3>TestWorkflowOrchestrator.cs</h3>
+          <p>代表“把流程、指令、校验和结果组织成一条可执行链路”的能力，属于很适合展示工程组织力的样本。</p>
+          <div class="chips">
+            <span class="chip">Workflow</span>
+            <span class="chip">Orchestration</span>
+            <span class="chip">Execution Flow</span>
+          </div>
+          <div class="actions">
+            <a class="primary" href="https://github.com/evilon2000/job-portrait/blob/main/style-code/dotnet/code/TestWorkflowOrchestrator.cs">看代码</a>
+            <a href="https://github.com/evilon2000/job-portrait/blob/main/style-code/dotnet/notes/TestWorkflowOrchestrator.md">看说明</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Java 精选 3 项</h2>
+      <div class="grid-3">
+        <article class="card accent-blue">
+          <div class="tagline">Signature #1</div>
+          <h3>AreaScopedWorkDataQuery.java</h3>
+          <p>这是最容易抓住面试官的 Java 样本之一，因为它不是普通查询，而是把“区域权限边界”转译成下游业务查询约束。</p>
+          <div class="chips">
+            <span class="chip">Area Isolation</span>
+            <span class="chip">Permission Scope</span>
+            <span class="chip">Business Query</span>
+          </div>
+          <div class="actions">
+            <a class="primary" href="https://github.com/evilon2000/job-portrait/blob/main/style-code/java/code/AreaScopedWorkDataQuery.java">看代码</a>
+            <a href="https://github.com/evilon2000/job-portrait/blob/main/style-code/java/notes/AreaScopedWorkDataQuery.md">看说明</a>
+          </div>
+        </article>
+        <article class="card accent-green">
+          <div class="tagline">Signature #2</div>
+          <h3>GeoServerPublishManager.java</h3>
+          <p>这个样本能直接体现 GIS 服务平台化思路，不是“调用一次接口”，而是把 workspace、datastore、publish 流程组织成服务边界。</p>
+          <div class="chips">
+            <span class="chip">GIS</span>
+            <span class="chip">GeoServer</span>
+            <span class="chip">Platform Service</span>
+          </div>
+          <div class="actions">
+            <a class="primary" href="https://github.com/evilon2000/job-portrait/blob/main/style-code/java/code/GeoServerPublishManager.java">看代码</a>
+            <a href="https://github.com/evilon2000/job-portrait/blob/main/style-code/java/notes/GeoServerPublishManager.md">看说明</a>
+          </div>
+        </article>
+        <article class="card accent-red">
+          <div class="tagline">Signature #3</div>
+          <h3>FlowableProcessSearchBuilder.java</h3>
+          <p>适合展示你在工作流和平台查询上的表达能力。面试官会更容易看到你在复杂平台里怎么组织查询条件、流程节点和搜索入口。</p>
+          <div class="chips">
+            <span class="chip">Flowable</span>
+            <span class="chip">Query Builder</span>
+            <span class="chip">Platform Backend</span>
+          </div>
+          <div class="actions">
+            <a class="primary" href="https://github.com/evilon2000/job-portrait/blob/main/style-code/java/code/FlowableProcessSearchBuilder.java">看代码</a>
+            <a href="https://github.com/evilon2000/job-portrait/blob/main/style-code/java/notes/FlowableProcessSearchBuilder.md">看说明</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>这页怎么用</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>发给面试官时</h3>
+          <ul>
+            <li>先发主页，再补这页。</li>
+            <li>如果对方偏架构/后端平台，直接发这页更有效。</li>
+            <li>如果对方时间很少，让他只看上面的 3+3 精选样本。</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>你的优势会被怎样感知</h3>
+          <ul>
+            <li>不是简单 CRUD 型开发。</li>
+            <li>有结构化抽象和边界意识。</li>
+            <li>能把权限、流程、集成、GIS、规则这些复杂点组织进系统。</li>
+          </ul>
+        </article>
+      </div>
+      <footer>Curated to be recruiter-friendly and interviewer-friendly</footer>
+    </section>
+  </main>
+</body>
+</html>
