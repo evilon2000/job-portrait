@@ -8,6 +8,7 @@
 - English: `https://evilon2000.github.io/job-portrait/index-en.html`
 - `.NET` 画像: `https://evilon2000.github.io/job-portrait/personal-dev-portrait.html`
 - `Java` 画像: `https://evilon2000.github.io/job-portrait/java-team-dev-portrait.html`
+- 风格代码样本: `https://github.com/evilon2000/job-portrait/tree/main/style-code`
 
 ## 中文说明
 
