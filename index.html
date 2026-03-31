@@ -1,0 +1,242 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>个人开发画像 | 求职技术主页</title>
+  <style>
+    :root {
+      --bg: #07111b;
+      --bg-2: #101b2a;
+      --card: rgba(13, 23, 37, 0.82);
+      --line: rgba(148, 163, 184, 0.16);
+      --text: #e5edf6;
+      --muted: #99a8bb;
+      --green: #22c55e;
+      --blue: #38bdf8;
+      --sand: #f0c98a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(56, 189, 248, 0.18), transparent 28%),
+        radial-gradient(circle at 88% 12%, rgba(34, 197, 94, 0.14), transparent 24%),
+        linear-gradient(145deg, #020617, #07111b 42%, #101b2a);
+      min-height: 100vh;
+    }
+    .grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 92%);
+    }
+    .wrap {
+      width: min(1120px, 92vw);
+      margin: 28px auto 56px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero, .section {
+      background: rgba(9, 17, 30, 0.8);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+    }
+    .hero { padding: 32px; }
+    .section { padding: 22px; margin-top: 18px; }
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b8f3cf;
+      border: 1px solid rgba(34, 197, 94, 0.32);
+      background: rgba(34, 197, 94, 0.08);
+    }
+    h1 {
+      margin: 14px 0 12px;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.06;
+    }
+    .lead {
+      margin: 0;
+      max-width: 930px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 16px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .actions a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 10px 15px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.72);
+    }
+    .actions a.primary {
+      border-color: rgba(56, 189, 248, 0.42);
+      background: rgba(14, 116, 144, 0.22);
+      color: #c9f6ff;
+    }
+    .cards, .cols {
+      display: grid;
+      gap: 14px;
+    }
+    .cards {
+      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .cols {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .card, .panel {
+      background: var(--card);
+      border: 1px solid rgba(125, 211, 252, 0.1);
+      border-radius: 18px;
+      padding: 16px;
+    }
+    h2 { margin: 0 0 12px; font-size: 19px; }
+    h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #cfe5f5;
+    }
+    p, li { line-height: 1.8; color: #d9e4ef; }
+    ul { margin: 0; padding-left: 18px; }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .chip {
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #f7deb1;
+      border: 1px solid rgba(240, 201, 138, 0.24);
+      background: rgba(240, 201, 138, 0.08);
+    }
+    footer {
+      margin-top: 16px;
+      text-align: right;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .wrap { margin-top: 18px; }
+      .hero, .section { padding: 16px; border-radius: 18px; }
+      .lead { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid"></div>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Career Landing Page</div>
+      <h1>个人开发画像与求职技术总结</h1>
+      <p class="lead">
+        这份主页将技术能力拆成两条独立主线：`.NET` 侧强调个人开发、业务抽象与稳定交付，`Java` 侧强调团队协作、平台型后端、复杂业务建模与多模块系统推进。两套画像分开呈现，避免技术栈互相污染，更接近真实履历结构。
+      </p>
+      <div class="actions">
+        <a class="primary" href="./personal-dev-portrait.html">查看 .NET 个人画像</a>
+        <a href="./java-team-dev-portrait.html">查看 Java 团队画像</a>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <h3>.NET 侧定位</h3>
+          <p>偏个人完整交付，擅长中后台业务系统、通用能力沉淀、模块复用与持续迭代，编码习惯较稳定，具备较好的自驱交付能力。</p>
+        </article>
+        <article class="card">
+          <h3>Java 侧定位</h3>
+          <p>偏团队协作与平台建设，覆盖农业 SaaS、GIS、园区/社区治理、流程与数据统计类系统，能在复杂业务域中推进接口、服务、数据模型与模块拆分。</p>
+        </article>
+        <article class="card">
+          <h3>求职表达重点</h3>
+          <p>不把自己包装成纯算法或纯框架工程师，而是强调“能落业务、能带结构、能识别风险、能长期维护”的工程型开发者形象。</p>
+        </article>
+        <article class="card">
+          <h3>页面结构</h3>
+          <p>主页给出总览，两份画像分别承载 `.NET` 与 `Java` 的能力证据，适合直接作为 GitHub Pages 的对外展示入口。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>技术总结</h2>
+      <div class="cols">
+        <article class="panel">
+          <h3>后端能力</h3>
+          <ul>
+            <li>熟悉业务型后端项目的分层组织、权限控制、数据建模、流程推进和统计接口设计。</li>
+            <li>能处理单体系统、多模块项目、SaaS 业务、GIS 服务、协同类平台与中后台管理系统。</li>
+            <li>具备从数据库、Mapper、Service、Controller 到页面交互链路的完整落地意识。</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>工程特点</h3>
+          <ul>
+            <li>擅长从旧项目、团队项目中快速识别可复用结构与风险点。</li>
+            <li>对代码洁净度、仓库规范、权限边界、巨型 Service、模板二开污染等问题有清晰判断。</li>
+            <li>不是只会堆 CRUD，更重视业务语义、结构边界和后续维护成本。</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>适合岗位</h3>
+          <ul>
+            <li>.NET 后端工程师</li>
+            <li>Java 后端工程师</li>
+            <li>业务平台开发工程师</li>
+            <li>SaaS / 中后台 / 政企项目研发工程师</li>
+          </ul>
+        </article>
+      </div>
+      <div class="chips">
+        <span class="chip">.NET</span>
+        <span class="chip">Java</span>
+        <span class="chip">SaaS</span>
+        <span class="chip">GIS</span>
+        <span class="chip">Spring Boot</span>
+        <span class="chip">MyBatis / MyBatis-Plus</span>
+        <span class="chip">Shiro / Sa-Token</span>
+        <span class="chip">项目交付</span>
+        <span class="chip">团队协作</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>使用说明</h2>
+      <div class="cols">
+        <article class="panel">
+          <h3>对外展示</h3>
+          <p>把 GitHub Pages 根地址作为主页入口，对外发根地址即可。需要强调技术分线时，再分别发 `.NET` 与 `Java` 两个独立页面链接。</p>
+        </article>
+        <article class="panel">
+          <h3>投递建议</h3>
+          <p>投 `.NET` 岗位优先展示个人开发画像；投 `Java` 岗位优先展示团队协作画像；投综合后端岗可以先发首页，再根据 JD 补发对应子页面。</p>
+        </article>
+      </div>
+      <footer>Generated from local code wiki</footer>
+    </section>
+  </main>
+</body>
+</html>

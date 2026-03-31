@@ -1,0 +1,355 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java 团队协作画像</title>
+  <style>
+    :root {
+      --paper: #f5efe2;
+      --paper-2: #fffaf0;
+      --ink: #2d241c;
+      --muted: #6f6255;
+      --line: rgba(90, 66, 42, 0.14);
+      --card: rgba(255, 250, 240, 0.86);
+      --accent: #c96b2c;
+      --accent-2: #295f4e;
+      --accent-3: #a23d2a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", serif;
+      background:
+        radial-gradient(circle at 10% 12%, rgba(201, 107, 44, 0.16), transparent 24%),
+        radial-gradient(circle at 88% 20%, rgba(41, 95, 78, 0.14), transparent 26%),
+        linear-gradient(180deg, #ede3d1, #f5efe2 28%, #efe4d0 100%);
+      min-height: 100vh;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.25;
+      background-image:
+        linear-gradient(rgba(120, 98, 73, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120, 98, 73, 0.06) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), transparent 95%);
+    }
+
+    .wrap {
+      width: min(1120px, 92vw);
+      margin: 26px auto 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .switcher {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .switcher a {
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid rgba(90, 66, 42, 0.18);
+      background: rgba(255, 250, 240, 0.7);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .switcher a.active {
+      border-color: rgba(201, 107, 44, 0.45);
+      background: rgba(201, 107, 44, 0.14);
+      color: #8e4311;
+    }
+
+    .hero,
+    .section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 14px 40px rgba(86, 65, 44, 0.08);
+      animation: rise 0.75s ease-out;
+    }
+
+    .hero {
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -30px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 107, 44, 0.18), transparent 68%);
+    }
+
+    .section {
+      padding: 22px;
+      margin-top: 18px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(41, 95, 78, 0.25);
+      color: var(--accent-2);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(41, 95, 78, 0.06);
+    }
+
+    h1 {
+      margin: 14px 0 10px;
+      font-size: clamp(30px, 4.4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: 0.01em;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 920px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 16px;
+    }
+
+    .cards,
+    .lanes {
+      display: grid;
+      gap: 14px;
+    }
+
+    .cards {
+      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .lanes {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card,
+    .lane {
+      border: 1px solid rgba(90, 66, 42, 0.12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.42);
+      padding: 16px;
+    }
+
+    .card h3,
+    .lane h3,
+    .section h2 {
+      margin: 0 0 10px;
+    }
+
+    .card h3,
+    .lane h3 {
+      font-size: 14px;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .section h2 {
+      font-size: 18px;
+      color: #261d16;
+    }
+
+    p,
+    li {
+      line-height: 1.8;
+      color: #3a3027;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .band {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .token {
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      background: rgba(201, 107, 44, 0.1);
+      color: #8e4311;
+      border: 1px solid rgba(201, 107, 44, 0.22);
+    }
+
+    .warning {
+      border-left: 4px solid var(--accent-3);
+      padding-left: 14px;
+    }
+
+    footer {
+      margin-top: 16px;
+      text-align: right;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 720px) {
+      .wrap { margin-top: 18px; }
+      .hero, .section { padding: 16px; border-radius: 16px; }
+      .lead { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <main class="wrap">
+    <nav class="switcher">
+      <a href="./personal-dev-portrait.html">.NET 个人画像</a>
+      <a class="active" href="./java-team-dev-portrait.html">Java 团队画像</a>
+    </nav>
+
+    <section class="hero">
+      <span class="eyebrow">Java Team Portrait</span>
+      <h1>团队协作导向的 Java 平台开发画像</h1>
+      <p class="lead">
+        这条画像只代表 <strong>Java 团队协作线</strong>。
+        重点不是个人代码签名感，而是多人环境下的平台拆分、服务边界、流程编排、区域隔离，以及 GIS / IoT / 业务域的复合能力整合。
+      </p>
+      <div class="cards">
+        <article class="card">
+          <h3>一句话定位</h3>
+          <p>擅长在团队项目中搭平台主干，把多模块业务系统组织成可协作、可扩展、可治理的结构。</p>
+        </article>
+        <article class="card">
+          <h3>适用边界</h3>
+          <p>这页只用于 Java 团队项目，不拿 .NET 个人开发的一致性逻辑来覆盖它。</p>
+        </article>
+        <article class="card">
+          <h3>强项来源</h3>
+          <p>真正有辨识度的不是单模块编码，而是平台化拆分和复合能力集成。</p>
+        </article>
+        <article class="card">
+          <h3>核心标签</h3>
+          <p>platform-delivery / workflow-driven / area-isolation / GIS-IoT integration</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>最擅长的技术栈</h2>
+      <div class="lanes">
+        <article class="lane">
+          <h3>平台框架</h3>
+          <ul>
+            <li>Java</li>
+            <li>Spring Boot</li>
+            <li>Spring Cloud / Spring Cloud Alibaba</li>
+            <li>Nacos / OpenFeign / MyBatis-Plus / Flowable</li>
+          </ul>
+        </article>
+        <article class="lane">
+          <h3>平台能力</h3>
+          <ul>
+            <li>网关、认证、服务拆分</li>
+            <li>公共模块与 service-api 契约</li>
+            <li>Maven 多模块工程组织</li>
+            <li>跨服务能力协同</li>
+          </ul>
+        </article>
+        <article class="lane">
+          <h3>治理能力</h3>
+          <ul>
+            <li>区域数据隔离</li>
+            <li>组织层级与数据范围控制</li>
+            <li>复杂查询条件翻译</li>
+            <li>流程状态驱动业务状态</li>
+          </ul>
+        </article>
+        <article class="lane">
+          <h3>专项融合</h3>
+          <ul>
+            <li>GIS: GeoTools / JTS / PostGIS / GeoServer</li>
+            <li>IoT: 设备与作业数据接入</li>
+            <li>AI: Spring AI Alibaba / RAG / MCP 试验</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>最擅长的开发模式</h2>
+      <ul>
+        <li>按 gateway、auth、business、common、service-api 组织平台主干。</li>
+        <li>把流程、任务、审批、状态编排抽到服务层或公共工具层。</li>
+        <li>对查询治理、数据范围、区域交集过滤有清晰的中间转换思路。</li>
+        <li>能够把业务、GIS、IoT、认证、网关这些能力拼成一个完整平台。</li>
+        <li>在多人参与的代码环境里，仍然能建立主干结构和核心治理模式。</li>
+      </ul>
+      <div class="band">
+        <span class="token">平台交付能力</span>
+        <span class="token">团队协作环境</span>
+        <span class="token">区域隔离设计</span>
+        <span class="token">GIS 深度接入</span>
+        <span class="token">IoT 业务联动</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>最强项目证据</h2>
+      <div class="lanes">
+        <article class="lane">
+          <h3>AirNetworkPlatformCloudServer</h3>
+          <p>最能代表企业级 Java 平台拆分和核心平台骨架能力。</p>
+        </article>
+        <article class="lane">
+          <h3>smartagriculturesaas</h3>
+          <p>农业 SaaS、IoT、GIS、区域隔离融合度最高，是复合平台能力代表。</p>
+        </article>
+        <article class="lane">
+          <h3>GeoAnalyst</h3>
+          <p>GIS 专项能力最硬，证明这条线不只是业务后台，也覆盖空间数据工程。</p>
+        </article>
+        <article class="lane">
+          <h3>saassaserver</h3>
+          <p>最能体现区域隔离习惯，也最能暴露多作者协作下的工程治理问题。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section warning">
+      <h2>团队线的警示</h2>
+      <ul>
+        <li>多作者风格漂移会直接拉低平台完成度。</li>
+        <li>fallback 返回 null、宽泛异常捕获、printStackTrace 这类问题会破坏治理质量。</li>
+        <li>版本、插件、编译参数不一致，说明工程收口还可以继续加强。</li>
+        <li>Java 线真正要补的，不是“会不会做平台”，而是“能不能把平台治理得更稳”。</li>
+      </ul>
+    </section>
+
+    <footer>Source: principles/java/my-java-team-profile.md + principles/java/my-java-overall-profile.md</footer>
+  </main>
+</body>
+</html>

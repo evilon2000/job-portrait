@@ -1,0 +1,343 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>.NET 个人开发画像</title>
+  <style>
+    :root {
+      --bg: #08111f;
+      --bg-soft: rgba(10, 20, 37, 0.76);
+      --card: rgba(13, 24, 43, 0.78);
+      --line: rgba(125, 211, 252, 0.18);
+      --text: #e7eef8;
+      --muted: #97a9c0;
+      --accent: #22c55e;
+      --accent-2: #38bdf8;
+      --accent-3: #f59e0b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(56, 189, 248, 0.22), transparent 34%),
+        radial-gradient(circle at 88% 16%, rgba(34, 197, 94, 0.2), transparent 28%),
+        linear-gradient(145deg, #020817, #08111f 42%, #0f1d33);
+      min-height: 100vh;
+    }
+
+    .mesh {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 88%);
+    }
+
+    .wrap {
+      width: min(1120px, 92vw);
+      margin: 28px auto 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .switcher {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .switcher a {
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.65);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .switcher a.active {
+      border-color: rgba(56, 189, 248, 0.45);
+      background: rgba(8, 145, 178, 0.18);
+      color: #bff3ff;
+    }
+
+    .hero,
+    .section {
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 22px;
+      background: var(--bg-soft);
+      backdrop-filter: blur(8px);
+      animation: rise 0.75s ease-out;
+    }
+
+    .hero {
+      padding: 30px;
+    }
+
+    .section {
+      padding: 22px;
+      margin-top: 18px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.32);
+      color: #b7f7cf;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 14px 0 10px;
+      font-size: clamp(30px, 4.4vw, 48px);
+      line-height: 1.08;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 920px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .cards,
+    .two-col {
+      display: grid;
+      gap: 14px;
+    }
+
+    .cards {
+      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .two-col {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card,
+    .panel {
+      border: 1px solid rgba(125, 211, 252, 0.12);
+      border-radius: 16px;
+      background: var(--card);
+      padding: 16px;
+    }
+
+    .card h3,
+    .panel h3,
+    .section h2 {
+      margin: 0 0 10px;
+    }
+
+    .card h3,
+    .panel h3 {
+      font-size: 14px;
+      color: #cbe7fb;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .section h2 {
+      font-size: 18px;
+      color: #f8fbff;
+    }
+
+    p,
+    li {
+      color: #d7e2ef;
+      line-height: 1.75;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .accent {
+      color: #b7f7cf;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      background: rgba(245, 158, 11, 0.1);
+      color: #f9dea2;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      padding-left: 14px;
+      border-left: 2px solid rgba(34, 197, 94, 0.35);
+    }
+
+    .step b { color: #bef264; }
+    .step span { color: var(--muted); }
+
+    footer {
+      margin-top: 16px;
+      text-align: right;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 720px) {
+      .wrap { margin-top: 18px; }
+      .hero, .section { padding: 16px; border-radius: 16px; }
+      .lead { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="mesh"></div>
+  <main class="wrap">
+    <nav class="switcher">
+      <a class="active" href="./personal-dev-portrait.html">.NET 个人画像</a>
+      <a href="./java-team-dev-portrait.html">Java 团队画像</a>
+    </nav>
+
+    <section class="hero">
+      <span class="eyebrow">.NET Personal Portrait</span>
+      <h1>具备良好编码习惯的 .NET 工程型开发画像</h1>
+      <p class="lead">
+        这条画像只代表 <span class="accent">.NET / C# 个人开发线</span>。
+        核心特征不是团队协作平台治理本身，而是个人对结构、流程、规则和基础设施的稳定掌控。
+        这些习惯说明你不只适合独立开发，也具备较好的平台适配能力，能够较顺畅地融入大型系统开发。
+      </p>
+      <div class="cards">
+        <article class="card">
+          <h3>一句话定位</h3>
+          <p>具备良好个人编码习惯，擅长独立完成复杂流程设计、动态查询整形、规则收口和基础设施抽象。</p>
+        </article>
+        <article class="card">
+          <h3>适用边界</h3>
+          <p>这页只用于 .NET 个人开发，不混入 Java 团队项目的协作和治理特征。</p>
+        </article>
+        <article class="card">
+          <h3>优势来源</h3>
+          <p>项目由个人主导时，结构一致性、主流程清晰度和代码签名感会比较强，这也为融入大型平台开发提供了基础。</p>
+        </article>
+        <article class="card">
+          <h3>核心标签</h3>
+          <p>structure-first / workflow-modeling / linq-for-shaping / infrastructure-aware</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>最擅长的技术栈</h2>
+      <div class="two-col">
+        <article class="panel">
+          <h3>基础平台</h3>
+          <ul>
+            <li>C#</li>
+            <li>.NET / .NET Core</li>
+            <li>ASP.NET Core</li>
+            <li>Entity Framework Core</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>查询与表达</h3>
+          <ul>
+            <li>LINQ</li>
+            <li>Expression 动态查询</li>
+            <li>动态过滤与排序</li>
+            <li>投影、分组、字典整形</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>架构与扩展</h3>
+          <ul>
+            <li>接口分层</li>
+            <li>工厂模式</li>
+            <li>处理器模式</li>
+            <li>状态对象与流程拆分</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>基础设施意识</h3>
+          <ul>
+            <li>EF Core QueryFilter</li>
+            <li>SaveChanges 后事件分发</li>
+            <li>provider 切换</li>
+            <li>缓存和树形递归服务</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>最擅长的开发模式</h2>
+      <ul>
+        <li>先搭主流程骨架，再把变化点挂到接口、工厂、处理器或状态对象。</li>
+        <li>先整形输入，再做规则判断、状态迁移和持久化。</li>
+        <li>把复杂流程拆成可命名、可追踪、可替换的阶段。</li>
+        <li>偏好显式扩展点，不喜欢隐藏很深的黑盒抽象。</li>
+        <li>抽象和泛型以减少重复、提升维护性为目标，不追求为了抽象而抽象。</li>
+        <li>编码习惯稳定，进入大型平台时能较快适配分层、边界和协作约束。</li>
+      </ul>
+      <div class="chips">
+        <span class="chip">个人编码习惯好</span>
+        <span class="chip">结构稳定</span>
+        <span class="chip">规则对象化</span>
+        <span class="chip">动态查询成熟</span>
+        <span class="chip">基础设施收口意识</span>
+        <span class="chip">可融入大型平台</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>代表演化路径</h2>
+      <div class="timeline">
+        <div class="step"><b>阶段 1：</b>协议与结构骨架 <span>Alpaca-Link / Bove IOT Debug2</span></div>
+        <div class="step"><b>阶段 2：</b>业务规则与流程建模 <span>AutchonBackend / BoveMES</span></div>
+        <div class="step"><b>阶段 3：</b>表达式与基础设施抽象 <span>BoveSysApi / ZCYX</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>这条线的天然边界</h2>
+      <ul>
+        <li>这条线最强的证据仍然是个人工程能力，而不是多人平台治理主场。</li>
+        <li>团队协作和多作者治理证据，不如 Java 项目那条线集中。</li>
+        <li>但良好的结构习惯、边界意识和抽象能力，已经足以支持融入大型平台开发环境。</li>
+      </ul>
+    </section>
+
+    <footer>Source: principles/my-dotnet-personal-profile.md + projects/cross-project-summary.md</footer>
+  </main>
+</body>
+</html>
