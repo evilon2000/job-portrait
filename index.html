@@ -1,22 +1,22 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>个人开发画像 | 后端求职主页</title>
-  <meta name="description" content="聚焦 .NET 与 Java 两条独立技术线的个人开发画像与求职技术总结。" />
+  <title>蒋帅帅 | 后端开发求职主页</title>
+  <meta name="description" content="蒋帅帅的后端开发求职主页，聚焦 C#/.NET、Java、GIS、物联网、工作流与 AI 集成能力。" />
   <style>
     :root {
       --bg: #07111b;
-      --bg-soft: rgba(8, 16, 28, 0.82);
-      --card: rgba(13, 24, 39, 0.86);
+      --bg-soft: rgba(8, 16, 28, 0.84);
+      --card: rgba(13, 24, 39, 0.88);
       --line: rgba(148, 163, 184, 0.16);
       --text: #e5edf6;
       --muted: #99a8bb;
       --blue: #38bdf8;
       --green: #22c55e;
-      --sand: #f0c98a;
-      --warn: #fb7185;
+      --gold: #f0c98a;
+      --red: #fb7185;
     }
 
     * { box-sizing: border-box; }
@@ -109,8 +109,8 @@
       position: absolute;
       right: -40px;
       top: -50px;
-      width: 240px;
-      height: 240px;
+      width: 260px;
+      height: 260px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(56, 189, 248, 0.14), transparent 68%);
     }
@@ -120,18 +120,52 @@
       margin-top: 18px;
     }
 
+    .hero-grid,
+    .grid-2,
+    .grid-3,
+    .stats {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1.5fr 1fr;
+      align-items: start;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .stats {
+      margin-top: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    }
+
     h1 {
-      margin: 12px 0;
-      font-size: clamp(32px, 5vw, 56px);
-      line-height: 1.04;
+      margin: 10px 0 8px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+    }
+
+    .name-subtitle {
+      margin: 0;
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .summary {
-      max-width: 940px;
-      margin: 0;
+      max-width: 920px;
+      margin: 16px 0 0;
       color: var(--muted);
       font-size: 16px;
-      line-height: 1.9;
+      line-height: 1.92;
     }
 
     .actions {
@@ -156,31 +190,18 @@
       color: #c9f6ff;
     }
 
-    .stats,
-    .grid-2,
-    .grid-3 {
-      display: grid;
-      gap: 14px;
-    }
-
-    .stats {
-      margin-top: 22px;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-
-    .card {
+    .card,
+    .profile-card,
+    .timeline-item {
       background: var(--card);
       border: 1px solid rgba(125, 211, 252, 0.1);
       border-radius: 18px;
       padding: 16px;
+    }
+
+    .profile-card {
+      position: relative;
+      z-index: 1;
     }
 
     .stat-num {
@@ -197,7 +218,7 @@
 
     h2 {
       margin: 0 0 12px;
-      font-size: 19px;
+      font-size: 20px;
     }
 
     h3 {
@@ -210,7 +231,7 @@
 
     p,
     li {
-      line-height: 1.8;
+      line-height: 1.82;
       color: #d9e4ef;
     }
 
@@ -235,14 +256,47 @@
       background: rgba(240, 201, 138, 0.08);
     }
 
-    .split {
-      border-left: 3px solid rgba(56, 189, 248, 0.35);
-      padding-left: 12px;
+    .mini-list {
+      display: grid;
+      gap: 10px;
     }
 
-    .warn {
-      border-left: 3px solid rgba(251, 113, 133, 0.45);
+    .mini-item {
       padding-left: 12px;
+      border-left: 3px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      border-left: 3px solid rgba(34, 197, 94, 0.35);
+    }
+
+    .time {
+      color: var(--gold);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .headline {
+      font-size: 18px;
+      font-weight: 700;
+      color: #f8fbff;
+      margin-bottom: 8px;
+    }
+
+    .role {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .note {
+      padding-left: 12px;
+      border-left: 3px solid rgba(251, 113, 133, 0.45);
     }
 
     footer {
@@ -250,6 +304,10 @@
       text-align: right;
       font-size: 12px;
       color: var(--muted);
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 720px) {
@@ -263,7 +321,7 @@
   <div class="mesh"></div>
   <main class="wrap">
     <div class="topbar">
-      <div class="tag">Backend Career Profile</div>
+      <div class="tag">Backend Resume Landing Page</div>
       <div class="lang">
         <a class="active" href="./index.html">中文</a>
         <a href="./index-en.html">EN</a>
@@ -271,136 +329,220 @@
     </div>
 
     <section class="hero">
-      <h1>个人开发画像与后端求职主页</h1>
-      <p class="summary">
-        这份主页不是把所有项目混在一起展示，而是把能力明确拆成两条独立技术线：`.NET` 强调个人开发、业务落地、稳定交付与良好编码习惯；`Java` 强调团队协作、平台后端、复杂业务建模与多模块系统推进。这样的表达方式更接近真实履历，也更利于针对不同岗位进行精准投递。
-      </p>
-      <div class="actions">
-        <a class="primary" href="./personal-dev-portrait.html">查看 .NET 个人画像</a>
-        <a href="./java-team-dev-portrait.html">查看 Java 团队画像</a>
-        <a href="./style-code/">查看风格代码样本</a>
-        <a href="https://github.com/evilon2000/job-portrait">查看 GitHub 仓库</a>
+      <div class="hero-grid">
+        <div>
+          <p class="name-subtitle">Jiang Shuaishuai</p>
+          <h1>蒋帅帅</h1>
+          <p class="summary">
+            后端开发，长期深耕企业级系统、GIS 平台、物联网通信、流程引擎与业务平台建设。职业路径很清晰：前期以 <strong>.NET / C#</strong> 为主，参与 MES、ERP、仪表 SaaS 与 IoT 网关建设；近年在 <strong>Java / Spring Boot</strong> 方向承担 GIS 平台、智慧农业、无人机空网、社会化服务平台与 AI 集成类项目，形成了 <strong>C# + Java 双栈、GIS + IoT + Workflow + AI 复合能力</strong>。
+          </p>
+          <div class="actions">
+            <a class="primary" href="./personal-dev-portrait.html">查看 .NET 画像</a>
+            <a href="./java-team-dev-portrait.html">查看 Java 画像</a>
+            <a href="./style-code/">查看精选代码样本</a>
+            <a href="https://github.com/evilon2000">GitHub</a>
+          </div>
+        </div>
+        <aside class="profile-card">
+          <h3>求职定位</h3>
+          <div class="mini-list">
+            <div class="mini-item">
+              <strong>目标岗位</strong><br />
+              Java 后端 / .NET 后端 / GIS 平台 / 物联网平台研发
+            </div>
+            <div class="mini-item">
+              <strong>核心领域</strong><br />
+              GIS、IoT、工作流、企业管理系统、无人机应用平台
+            </div>
+            <div class="mini-item">
+              <strong>当前优势</strong><br />
+              复杂业务抽象、平台型后端、跨系统集成、算法与业务结合
+            </div>
+            <div class="mini-item">
+              <strong>教育背景</strong><br />
+              河南大学 · 物理学本科
+            </div>
+          </div>
+        </aside>
       </div>
+
       <div class="stats">
         <article class="card">
-          <div class="stat-num">2</div>
-          <div class="stat-label">独立技术画像页面</div>
+          <div class="stat-num">双栈</div>
+          <div class="stat-label">C#/.NET 与 Java/Spring Boot 并行发展</div>
         </article>
         <article class="card">
-          <div class="stat-num">.NET</div>
-          <div class="stat-label">个人开发与交付导向</div>
+          <div class="stat-num">GIS + IoT</div>
+          <div class="stat-label">空间数据平台与设备通信平台都做过完整落地</div>
         </article>
         <article class="card">
-          <div class="stat-num">Java</div>
-          <div class="stat-label">团队协作与平台建设导向</div>
+          <div class="stat-num">20+ 乡镇</div>
+          <div class="stat-label">无人机空网监测平台在多个乡镇多租户部署</div>
         </article>
         <article class="card">
-          <div class="stat-num">Pages</div>
-          <div class="stat-label">可直接对外展示的静态主页</div>
+          <div class="stat-num">40%</div>
+          <div class="stat-label">GIS 数据平台建设带来数据管理效率提升</div>
         </article>
       </div>
     </section>
 
     <section class="section">
-      <h2>技术定位</h2>
-      <div class="grid-2">
-        <article class="card split">
-          <h3>.NET 方向</h3>
-          <ul>
-            <li>偏个人开发与完整交付，具备较强的自驱推进能力。</li>
-            <li>适合中后台、管理系统、业务支撑系统和轻量 SaaS 场景。</li>
-            <li>编码习惯相对稳定，能从个人开发自然过渡到大平台协作开发。</li>
-          </ul>
-        </article>
-        <article class="card split">
-          <h3>Java 方向</h3>
-          <ul>
-            <li>偏团队协作与平台型后端，覆盖农业 SaaS、GIS、社区治理、流程与统计类系统。</li>
-            <li>能处理多模块项目、复杂业务模型、权限边界、数据组织和接口推进。</li>
-            <li>更适合表达为“业务平台型工程师”，而不是单点框架型开发者。</li>
-          </ul>
-        </article>
-      </div>
-      <div class="chips">
-        <span class="chip">.NET</span>
-        <span class="chip">Java</span>
-        <span class="chip">Spring Boot</span>
-        <span class="chip">MyBatis / MyBatis-Plus</span>
-        <span class="chip">SaaS</span>
-        <span class="chip">GIS</span>
-        <span class="chip">Shiro / Sa-Token</span>
-        <span class="chip">中后台平台</span>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>求职表达重点</h2>
+      <h2>为什么这个主页值得看</h2>
       <div class="grid-3">
         <article class="card">
-          <h3>业务理解</h3>
-          <p>能读懂并推进真实业务系统，不只会搭框架或写基础 CRUD。</p>
+          <h3>不是纯 CRUD 简历</h3>
+          <p>项目覆盖 GIS 数据导入、地图发布、拓扑处理、物联网协议接入、工作流集成、AI 航线规划和多源系统集成，技术深度与业务复杂度都足够。</p>
         </article>
         <article class="card">
-          <h3>结构意识</h3>
-          <p>会区分核心业务、模板代码、二开污染与可复用能力沉淀。</p>
+          <h3>经历有清晰演进</h3>
+          <p>从 MES / ERP / 仪表制造业系统，演进到 GIS、智慧农业、无人机空网和平台型后端，成长路径连续，不是零散拼贴。</p>
         </article>
         <article class="card">
-          <h3>维护视角</h3>
-          <p>对权限边界、巨型 Service、仓库污染、老项目技术债有明确判断。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>风格代码样本</h2>
-      <div class="grid-2">
-        <article class="card">
-          <h3>.NET Samples</h3>
-          <p>已加入表达式过滤、状态机、规则编译、协议解析、流程编排等代表性样本，侧重个人开发风格与结构化抽象能力。</p>
-        </article>
-        <article class="card">
-          <h3>Java Samples</h3>
-          <p>已加入流程查询、区域隔离、GIS 发布、集成编排、设备树查询、AI 业务试验等样本，侧重团队平台开发风格。</p>
+          <h3>适合平台型团队</h3>
+          <p>既能写个人风格很强的 C# 结构化代码，也能在 Java 团队项目里承担复杂业务建模、接口组织与系统边界治理。</p>
         </article>
       </div>
     </section>
 
     <section class="section">
-      <h2>适合岗位</h2>
+      <h2>代表业绩</h2>
       <div class="grid-2">
         <article class="card">
-          <h3>优先岗位</h3>
+          <h3>GIS 数据平台建设</h3>
+          <p>主导多源矢量数据导入与自动化处理流程，建立统一空间数据库，支持拓扑校验与地图服务发布，数据管理效率提升约 40%。</p>
+        </article>
+        <article class="card">
+          <h3>农业社会化服务平台</h3>
+          <p>负责测亩仪数据接入与分析，通过实时传感器解析和阈值参数设计，为省级农业部门提供可信作业数据支撑并完成项目验收。</p>
+        </article>
+        <article class="card">
+          <h3>无人机空网平台</h3>
+          <p>完成 DJI 机场 2/3 协议对接、DRC 指令直控、任务调度、WebSocket 实时推送、直播服务、航线生成算法与飞行成果自动处理。</p>
+        </article>
+        <article class="card">
+          <h3>仪表 SaaS / IoT 网关 / MES</h3>
+          <p>在 .NET 方向参与多协议物联网网关、仪表业务平台、ERP 二开和 MES 系统集成，覆盖 TCP/UDP/MQTT、规则引擎、报表服务与设备校准数据采集。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>职业经历</h2>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="time">2022.03 - 至今</div>
+          <div class="headline">中策资讯科技集团有限公司</div>
+          <div class="role">Java / GIS / 物联网 / 无人机业务平台</div>
           <ul>
-            <li>.NET 后端工程师</li>
-            <li>Java 后端工程师</li>
-            <li>业务平台开发工程师</li>
-            <li>SaaS / 中后台 / 政企系统研发工程师</li>
+            <li>负责 GIS 数据平台、智慧农业、无人机空网、社会化服务等项目的后端设计与开发。</li>
+            <li>承担矢量导入、拓扑处理、地图发布、设备通信、工作流集成、任务调度、AI 集成等关键模块。</li>
+            <li>项目特点是平台化、场景复杂、跨 GIS / IoT / 流程 / 数据分析边界协同明显。</li>
+          </ul>
+        </article>
+        <article class="timeline-item">
+          <div class="time">2018.09 - 2022.02</div>
+          <div class="headline">嘉兴博孚智能科技有限公司</div>
+          <div class="role">.NET / 智能仪表 / IoT / MES / ERP</div>
+          <ul>
+            <li>负责物联网网关核心架构、多协议接入解析、智能仪表 SaaS 后台以及 ERP/MES 深度二开。</li>
+            <li>参与 Azure 相关服务使用，推进制造数据、设备数据与管理数据整合。</li>
+            <li>这一阶段形成了你最扎实的 C# 个人工程习惯与企业系统交付能力。</li>
+          </ul>
+        </article>
+        <article class="timeline-item">
+          <div class="time">2017.09 - 2018.09</div>
+          <div class="headline">凯米光学公司</div>
+          <div class="role">VB / C# / MES / ERP</div>
+          <ul>
+            <li>负责 MES 核心模块二开、ERP 系统优化及设备数据集成。</li>
+            <li>推动注塑与镀膜工序自动化改造，实现产量采集、工艺参数下发与绩效看板。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>代表项目</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>无人机空网监测系统</h3>
+          <p>Spring Boot、Spring AI、YOLO、MQTT、GeoTools、GeoServer、DJI SDK、PostGIS。</p>
+          <ul>
+            <li>多租户部署在 20 多个乡镇，服务耕地红线保护、非法采砂、非法放牧等多场景监测。</li>
+            <li>支持二三维航线绘制、任务调度、断点续飞、影像与点云成果处理、AI 预警与消息分发。</li>
+            <li>集成 LLM、RAG、Tool Calling，用自然语言生成报表与航线执行能力。</li>
           </ul>
         </article>
         <article class="card">
-          <h3>更合适的形象</h3>
-          <p>工程型开发者、业务平台型后端、交付导向研发，而不是单纯算法竞赛型或只会脚手架的框架型工程师。</p>
+          <h3>农业社会化服务平台</h3>
+          <p>GIS 一张图、作业轨迹、Flowable 工作流、法大大网签、IoT 设备接入、PDF 作业报告。</p>
+          <ul>
+            <li>连接小农户与服务组织，实现作业标准化、智能化、社会化。</li>
+            <li>关键难点在区域数据隔离接口设计与 GIS 点汇聚面算法。</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>中策云享项目管理</h3>
+          <p>内部项目台账、干系人管理、质检归档、看板统计与流程化协同。</p>
+          <ul>
+            <li>以项目创建、任务分派、外业执行、成果质检、归档结算形成线上闭环。</li>
+            <li>对 DDD、MediatR、Hangfire 等结构进行过实践探索。</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>AMI / MES / ERP / 仪表 SaaS</h3>
+          <p>覆盖设备数据采集、企业生产管理、制造追溯、ERP 数据服务与报表分析。</p>
+          <ul>
+            <li>既做过协议接入、网关和设备集成，也做过上层业务系统和报表平台。</li>
+            <li>这类经历构成了你最厚实的企业级软件交付底盘。</li>
+          </ul>
         </article>
       </div>
     </section>
 
     <section class="section">
-      <h2>投递建议</h2>
-      <div class="grid-2">
+      <h2>技术关键词</h2>
+      <div class="chips">
+        <span class="chip">C#</span>
+        <span class="chip">.NET Core</span>
+        <span class="chip">WinForm</span>
+        <span class="chip">WPF</span>
+        <span class="chip">Java</span>
+        <span class="chip">Spring Boot</span>
+        <span class="chip">MyBatis Plus</span>
+        <span class="chip">Flowable</span>
+        <span class="chip">MQTT</span>
+        <span class="chip">TCP / UDP</span>
+        <span class="chip">WebSocket</span>
+        <span class="chip">GeoTools</span>
+        <span class="chip">GeoServer</span>
+        <span class="chip">PostGIS</span>
+        <span class="chip">DJI SDK</span>
+        <span class="chip">Spring AI</span>
+        <span class="chip">RAG</span>
+        <span class="chip">MCP</span>
+        <span class="chip">ERP</span>
+        <span class="chip">MES</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>补充入口</h2>
+      <div class="grid-3">
         <article class="card">
-          <h3>投 .NET 岗位</h3>
-          <p>优先发首页，再补发 `.NET` 个人画像页，突出个人交付、业务实现与编码习惯。</p>
+          <h3>.NET 画像</h3>
+          <p>重点展示个人编码习惯、结构化抽象、规则引擎、状态机、表达式过滤与桌面端/后端双端经验。</p>
         </article>
         <article class="card">
-          <h3>投 Java 岗位</h3>
-          <p>优先发首页，再补发 `Java` 团队画像页，突出团队协作、平台项目与复杂业务推进能力。</p>
+          <h3>Java 画像</h3>
+          <p>重点展示团队协作、平台后端、多模块业务系统、GIS 服务、区域隔离与工作流集成。</p>
+        </article>
+        <article class="card note">
+          <h3>代码样本</h3>
+          <p>如果面试官更看重代码风格与抽象能力，建议直接进入精选代码样本页，先看最能代表个人风格的 3+3 片段。</p>
         </article>
       </div>
-      <div class="card warn" style="margin-top:14px;">
-        <h3>说明</h3>
-        <p>当前页面只展示技术画像与求职定位，不主动添加联系方式、简历编号或项目夸张描述，避免无事实依据的信息污染展示内容。</p>
-      </div>
-      <footer>Generated from local code wiki and published via GitHub Pages</footer>
+      <footer>Data refined from local resume and code wiki</footer>
     </section>
   </main>
 </body>
