@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成都三天两夜游攻略</title>
+  <style>
+    :root {
+      --bg: #f6efe3;
+      --paper: rgba(255, 251, 244, 0.74);
+      --paper-strong: #fff9f0;
+      --ink: #2e1d12;
+      --muted: #6d5446;
+      --accent: #b5441b;
+      --accent-2: #116466;
+      --accent-3: #d88f2d;
+      --line: rgba(63, 38, 24, 0.14);
+      --shadow: 0 28px 80px rgba(63, 38, 24, 0.14);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(216, 143, 45, 0.26), transparent 28%),
+        radial-gradient(circle at top right, rgba(17, 100, 102, 0.16), transparent 26%),
+        linear-gradient(180deg, #f9f1e7 0%, #f6efe3 48%, #efe4d2 100%);
+      font-family: "Avenir Next", "Trebuchet MS", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      width: 360px;
+      height: 360px;
+      left: -120px;
+      bottom: -80px;
+      background: radial-gradient(circle, rgba(181, 68, 27, 0.14), transparent 68%);
+      filter: blur(12px);
+    }
+
+    body::after {
+      width: 320px;
+      height: 320px;
+      right: -100px;
+      top: 18%;
+      background: radial-gradient(circle, rgba(17, 100, 102, 0.12), transparent 70%);
+      filter: blur(14px);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: min(calc(100% - 28px), var(--max));
+      margin: 0 auto;
+      padding-bottom: 72px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 18px;
+      margin-top: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 999px;
+      background: rgba(255, 249, 240, 0.66);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 36px rgba(69, 44, 31, 0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), #f2bb52);
+      color: #fff7ef;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      box-shadow: 0 14px 22px rgba(181, 68, 27, 0.22);
+      flex: none;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong,
+    .hero-copy h1,
+    h2,
+    h3 {
+      font-family: "Palatino Linotype", "Book Antiqua", "STKaiti", "KaiTi", serif;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.85rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav {
+      display: flex;
+      gap: 8px;
+      overflow: auto hidden;
+      scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav a {
+      white-space: nowrap;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible,
+    .nav a.active {
+      background: rgba(181, 68, 27, 0.12);
+      color: var(--accent);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .hero {
+      position: relative;
+      margin-top: 22px;
+      padding: clamp(28px, 5vw, 56px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 24px;
+      border-radius: 36px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 249, 240, 0.9), rgba(255, 242, 224, 0.74)),
+        linear-gradient(135deg, rgba(181, 68, 27, 0.1), rgba(17, 100, 102, 0.08));
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.46);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(181, 68, 27, 0.08), transparent 35%),
+        repeating-linear-gradient(
+          135deg,
+          rgba(46, 29, 18, 0.03) 0 10px,
+          transparent 10px 22px
+        );
+      pointer-events: none;
+    }
+
+    .hero-copy,
+    .hero-panel {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(181, 68, 27, 0.1);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-copy h1 {
+      margin: 16px 0 14px;
+      font-size: clamp(2.6rem, 5vw, 4.6rem);
+      line-height: 0.94;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy p {
+      max-width: 62ch;
+      margin: 0;
+      color: rgba(46, 29, 18, 0.82);
+      font-size: 1.04rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--accent), #cf6c35);
+      color: #fffaf5;
+      box-shadow: 0 18px 32px rgba(181, 68, 27, 0.24);
+    }
+
+    .button.secondary {
+      background: rgba(255, 249, 240, 0.7);
+      color: var(--accent-2);
+      border: 1px solid rgba(17, 100, 102, 0.16);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .hero-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 251, 244, 0.72);
+      border: 1px solid rgba(63, 38, 24, 0.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-panel {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .panel-card {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(46, 29, 18, 0.92);
+      color: #fff4e8;
+      box-shadow: 0 18px 32px rgba(46, 29, 18, 0.2);
+    }
+
+    .panel-card small {
+      display: inline-block;
+      color: rgba(255, 244, 232, 0.74);
+      margin-bottom: 8px;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .panel-card strong {
+      display: block;
+      font-size: 1.22rem;
+      margin-bottom: 6px;
+    }
+
+    .panel-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .panel-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 251, 244, 0.66);
+      border: 1px solid rgba(63, 38, 24, 0.09);
+    }
+
+    .panel-list b {
+      min-width: 58px;
+      color: var(--accent);
+      font-size: 0.88rem;
+    }
+
+    .section {
+      margin-top: 22px;
+      padding: clamp(22px, 4vw, 34px);
+      border-radius: 30px;
+      background: var(--paper);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      box-shadow: 0 20px 38px rgba(86, 63, 47, 0.08);
+      scroll-margin-top: 92px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 3vw, 2.4rem);
+      line-height: 1.04;
+    }
+
+    .section-header p {
+      max-width: 54ch;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(17, 100, 102, 0.08);
+      color: var(--accent-2);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .summary-grid,
+    .season-grid,
+    .food-grid,
+    .stay-grid,
+    .tips-grid,
+    .custom-grid,
+    .culture-grid,
+    .highlight-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .summary-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+
+    .summary-card,
+    .season-card,
+    .food-card,
+    .stay-card,
+    .tips-card,
+    .custom-card,
+    .culture-card,
+    .highlight-card {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 251, 244, 0.74);
+      border: 1px solid var(--line);
+    }
+
+    .summary-card strong,
+    .season-card strong,
+    .food-card strong,
+    .stay-card strong,
+    .tips-card strong,
+    .custom-card strong,
+    .culture-card strong,
+    .highlight-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .overview {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .note-box {
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(17, 100, 102, 0.12), rgba(216, 143, 45, 0.12));
+      border: 1px solid rgba(17, 100, 102, 0.14);
+    }
+
+    .season-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .tab {
+      min-height: 44px;
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(46, 29, 18, 0.06);
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      transition: transform 180ms ease, color 180ms ease, background 180ms ease;
+    }
+
+    .tab:hover,
+    .tab:focus-visible,
+    .tab.active {
+      background: rgba(181, 68, 27, 0.12);
+      color: var(--accent);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .tab-panels {
+      position: relative;
+    }
+
+    .tab-panel {
+      display: none;
+      animation: rise 260ms ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255, 251, 244, 0.72);
+      border: 1px solid var(--line);
+    }
+
+    .timeline-item time {
+      display: inline-grid;
+      place-items: center;
+      min-height: 46px;
+      border-radius: 16px;
+      background: rgba(17, 100, 102, 0.1);
+      color: var(--accent-2);
+      font-weight: 800;
+    }
+
+    .attraction-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .attraction-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      padding: 20px;
+      background:
+        linear-gradient(180deg, rgba(255, 251, 244, 0.86), rgba(255, 247, 236, 0.72)),
+        linear-gradient(135deg, rgba(181, 68, 27, 0.08), rgba(17, 100, 102, 0.04));
+      border: 1px solid var(--line);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .attraction-card:hover,
+    .attraction-card:focus-within {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 36px rgba(63, 38, 24, 0.12);
+    }
+
+    .attraction-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -28px -48px auto;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(216, 143, 45, 0.16), transparent 70%);
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .tagline.hot {
+      color: var(--accent);
+      background: rgba(181, 68, 27, 0.1);
+    }
+
+    .tagline.niche {
+      color: var(--accent-2);
+      background: rgba(17, 100, 102, 0.1);
+    }
+
+    .attraction-card h3 {
+      margin: 14px 0 8px;
+      font-size: 1.35rem;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .links a {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(46, 29, 18, 0.06);
+      color: var(--ink);
+      font-size: 0.88rem;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .links a:hover,
+    .links a:focus-visible {
+      background: rgba(181, 68, 27, 0.12);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .budget-table,
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(255, 251, 244, 0.74);
+      border: 1px solid var(--line);
+    }
+
+    .budget-table th,
+    .budget-table td,
+    .info-table th,
+    .info-table td {
+      padding: 14px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(63, 38, 24, 0.09);
+      vertical-align: top;
+    }
+
+    .budget-table tr:last-child td,
+    .info-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .budget-table th,
+    .info-table th {
+      background: rgba(46, 29, 18, 0.06);
+      font-size: 0.92rem;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .photo-card {
+      position: relative;
+      min-height: 200px;
+      padding: 16px;
+      border-radius: 24px;
+      color: #fff8f0;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(46, 29, 18, 0.1), rgba(46, 29, 18, 0.88));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .photo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 24%, rgba(46, 29, 18, 0.84)),
+        var(--photo-bg, linear-gradient(135deg, #cf6c35, #6f7b50));
+      transform: scale(1.02);
+    }
+
+    .photo-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .photo-card strong {
+      display: block;
+      margin-top: 88px;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: rgba(46, 29, 18, 0.9);
+    }
+
+    .list li + li {
+      margin-top: 8px;
+    }
+
+    .sources {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .sources a {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(46, 29, 18, 0.06);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      margin-top: 22px;
+      padding: 22px 24px;
+      border-radius: 24px;
+      background: rgba(46, 29, 18, 0.9);
+      color: rgba(255, 244, 232, 0.82);
+    }
+
+    .footer strong {
+      color: #fff8f0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 420ms ease, transform 420ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero,
+      .overview,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-grid,
+      .attraction-grid,
+      .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .season-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: min(calc(100% - 18px), var(--max));
+      }
+
+      .topbar {
+        top: 8px;
+        flex-direction: column;
+        align-items: stretch;
+        border-radius: 22px;
+      }
+
+      .hero-grid,
+      .summary-grid,
+      .attraction-grid,
+      .food-grid,
+      .stay-grid,
+      .tips-grid,
+      .custom-grid,
+      .culture-grid,
+      .highlight-grid,
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item time {
+        max-width: 92px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-badge">CD</div>
+        <div class="brand-copy">
+          <strong>成都三天两夜游</strong>
+          <span>熊猫、三国、茶馆、夜生活，一页打包</span>
+        </div>
+      </div>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#overview">概述</a>
+        <a href="#season">旅行时间</a>
+        <a href="#plan">行程</a>
+        <a href="#hot">热门景点</a>
+        <a href="#niche">小众景点</a>
+        <a href="#food">美食</a>
+        <a href="#stay">住宿</a>
+        <a href="#transport">交通</a>
+        <a href="#budget">预算</a>
+        <a href="#tips">避坑</a>
+      </nav>
+    </header>
+
+    <section class="hero reveal">
+      <div class="hero-copy">
+        <div class="eyebrow">成都城市攻略 / 2026-04-23 整理</div>
+        <h1>吃辣也松弛，<br>三天把成都玩明白。</h1>
+        <p>
+          这是一份给第一次去成都的人准备的三天两夜路线。它不追求景点堆砌，而是用最顺的动线，把熊猫、三国文化、茶馆慢生活、工业风街区和夜里最有烟火气的成都串成一条完整体验线。住在市中心，白天不瞎折返，晚上不浪费胃口。
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#plan">直接看三日安排</a>
+          <a class="button secondary" href="#budget">先看预算和住宿</a>
+        </div>
+        <div class="hero-grid">
+          <div class="metric">
+            <strong>3D2N</strong>
+            <span>经典线 + 松弛线并行</span>
+          </div>
+          <div class="metric">
+            <strong>6 个</strong>
+            <span>景点严格按 3 天 x 2 配置</span>
+          </div>
+          <div class="metric">
+            <strong>¥730+</strong>
+            <span>经济型人均可落地</span>
+          </div>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <div class="panel-card">
+          <small>最佳打开方式</small>
+          <strong>早熊猫，午逛馆，晚吃喝</strong>
+          <span>把最需要抢时间的熊猫基地放在第一天一早，后两天再切换到老成都和文化园林线。</span>
+        </div>
+        <ul class="panel-list">
+          <li>
+            <b>住哪里</b>
+            <span>春熙路、太古里、天府广场最均衡，三天都不容易绕远。</span>
+          </li>
+          <li>
+            <b>怎么走</b>
+            <span>地铁负责主通勤，打车负责最后一段，效率和体感都更稳。</span>
+          </li>
+          <li>
+            <b>怎么吃</b>
+            <span>火锅只安排一顿最强的，其他时间留给串串、甜水面和盖碗茶。</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="overview" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>1. 目的地概述</h2>
+          <p>成都不是那种必须不停赶点的城市，它最迷人的部分，恰恰来自“快慢切换”这件事。</p>
+        </div>
+      </div>
+      <div class="overview">
+        <div>
+          <p>
+            对第一次来成都的人来说，这座城市最适合的打开方式不是狂刷清单，而是在有限时间里把几个最有代表性的气质拼起来。清晨去看熊猫，是成都最直接也最没有争议的城市名片；中段走进武侯祠和望江楼，会明白这座城市为什么总带着一点从容的历史感；傍晚再回到人民公园、宽窄巷子、东郊记忆或热闹的美食街，成都才真正从“景点”变成“生活现场”。三天两夜虽然不长，但只要住在市区、路线排得顺，完全足够把经典地标、巴蜀文化和本地烟火气都尝到一轮。
+          </p>
+        </div>
+        <div class="note-box">
+          <strong>行程底层逻辑</strong>
+          <ul class="list">
+            <li>第一天处理最刚需的熊猫基地，把早起价值最大化。</li>
+            <li>第二天走文化和园林线，视觉和节奏都更沉静。</li>
+            <li>第三天把成都最松弛的一面留给茶馆、公园和老街收尾。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="summary-grid">
+        <article class="summary-card">
+          <strong>城市气质</strong>
+          <span>历史厚度和市井松弛并存，不用刻意找“体验”，走路本身就是体验。</span>
+        </article>
+        <article class="summary-card">
+          <strong>适合人群</strong>
+          <span>第一次来成都的情侣、朋友结伴、轻度家庭游，都能直接照抄。</span>
+        </article>
+        <article class="summary-card">
+          <strong>节奏建议</strong>
+          <span>别排太满，成都最值钱的是你肯停下来坐一会儿。</span>
+        </article>
+        <article class="summary-card">
+          <strong>核心关键词</strong>
+          <span>熊猫、红墙竹影、茶馆、串串、工业风、夜色。</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="season" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>2. 最佳旅行时间</h2>
+          <p>你这次要的版本默认按 4 月下旬到初夏前来配，气温友好，夜里也还能逛。</p>
+        </div>
+      </div>
+      <div class="season-grid">
+        <article class="season-card">
+          <strong>春末初夏最稳</strong>
+          <span>4 月下旬到 6 月上旬是成都很舒服的一段，白天适合长时间步行，晚上还能继续吃喝逛街，不至于太闷热。</span>
+        </article>
+        <article class="season-card">
+          <strong>穿搭策略</strong>
+          <span>薄外套 + 短袖最稳，白天和夜里体感会有差距。雨伞建议常备，成都偶尔会来一阵短时降雨。</span>
+        </article>
+        <article class="season-card">
+          <strong>时段优先级</strong>
+          <span>熊猫基地一定抢早，宽窄巷子和东郊记忆更适合傍晚后，人民公园适合上午或午后慢慢坐。</span>
+        </article>
+      </div>
+      <div class="chips" aria-label="季节标签">
+        <span class="chip">早晚温差要留意</span>
+        <span class="chip">周末人流明显抬升</span>
+        <span class="chip">夜游舒适度高</span>
+        <span class="chip">适合拍城市氛围照</span>
+      </div>
+    </section>
+
+    <section id="plan" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>3. 详细的行程规划建议</h2>
+          <p>用区域串联，不靠硬拼景点数量，三天都留出吃饭和发呆空间。</p>
+        </div>
+      </div>
+      <div class="tabs" role="tablist" aria-label="按天查看行程">
+        <button class="tab active" role="tab" aria-selected="true" aria-controls="day1" id="tab-day1">D1 熊猫 + 东郊记忆</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="day2" id="tab-day2">D2 武侯祠 + 望江楼</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="day3" id="tab-day3">D3 人民公园 + 宽窄巷子</button>
+      </div>
+      <div class="tab-panels">
+        <div class="tab-panel active" id="day1" role="tabpanel" aria-labelledby="tab-day1">
+          <div class="timeline">
+            <article class="timeline-item">
+              <time>07:30</time>
+              <div>
+                <strong>大熊猫繁育研究基地</strong>
+                <p>尽量第一波入园，优先看幼年熊猫和活跃区。上午是看熊猫最有价值的时间段。</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <time>12:00</time>
+              <div>
+                <strong>回市区吃午饭</strong>
+                <p>建议第一顿别上太重口，留点余量给晚上。午饭后回酒店稍作休整更稳。</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <time>15:00</time>
+              <div>
+                <strong>东郊记忆</strong>
+                <p>切换成轻松模式，逛创意街区、看展、喝咖啡。这里非常适合傍晚等灯亮。</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <time>19:00</time>
+              <div>
+                <strong>建设路或春熙路夜宵</strong>
+                <p>串串、冒菜、小吃都能安排，第一天重点是把胃和节奏都调到成都频道。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tab-panel" id="day2" role="tabpanel" aria-labelledby="tab-day2">
+          <div class="timeline">
+            <article class="timeline-item">
+              <time>09:00</time>
+              <div>
+                <strong>武侯祠博物馆</strong>
+                <p>从诸葛亮、刘备和蜀汉历史线切入，慢慢走比扫景点更值。红墙夹道很适合拍照。</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <time>12:30</time>
+              <div>
+                <strong>附近吃小吃或川菜</strong>
+                <p>第二天中午可以开始进阶一点，比如回锅肉、宫保鸡丁、甜水面和钟水饺。</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <time>15:00</time>
+              <div>
+                <strong>望江楼公园</strong>
+                <p>用竹林和园林把当天节奏降下来。这里不需要赶，只要散步和坐一会儿就对了。</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <time>19:30</time>
+              <div>
+                <strong>玉林、九眼桥或锦里夜场</strong>
+                <p>安排火锅或小酒馆。第二天最适合吃一顿有仪式感的成都火锅。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tab-panel" id="day3" role="tabpanel" aria-labelledby="tab-day3">
+          <div class="timeline">
+            <article class="timeline-item">
+              <time>09:30</time>
+              <div>
+                <strong>人民公园喝茶</strong>
+                <p>最后一天不要再猛冲，先坐下来。盖碗茶、散步、看本地人的日常，是成都收尾最好的方式。</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <time>12:00</time>
+              <div>
+                <strong>公园周边轻松午饭</strong>
+                <p>小吃、面食都行，不建议临走前再吃过度刺激的东西，避免返程难受。</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <time>14:00</time>
+              <div>
+                <strong>宽窄巷子</strong>
+                <p>买伴手礼、拍老街、收最后一轮小吃。它更适合作为结束段，而不是整趟行程的重心。</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <time>17:30</time>
+              <div>
+                <strong>返程</strong>
+                <p>根据出发点留出足够通勤时间。去天府机场要明显比去双流机场和成都东站预留更多余量。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hot" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>4. 热门核心景点</h2>
+          <p>这 3 个是第一次来成都最难绕开的主景点，信息密度高，体验辨识度也高。</p>
+        </div>
+      </div>
+      <div class="attraction-grid">
+        <article class="attraction-card">
+          <span class="tagline hot">🔥 热门核心景点</span>
+          <h3>成都大熊猫繁育研究基地</h3>
+          <div class="meta">
+            <span>⭐ 4.6</span>
+            <span>📍 成华区熊猫大道1375号</span>
+            <span>🕙 07:30-18:00（旺季常见时段）</span>
+            <span>🎫 成人约55元，建议预约</span>
+          </div>
+          <p>成都最强城市名片。熊猫活跃度高的时段非常集中，早去和晚去差别很大。</p>
+          <div class="links">
+            <a href="https://www.baidu.com/s?wd=%E6%88%90%E9%83%BD%E5%A4%A7%E7%86%8A%E7%8C%AB%E7%B9%81%E8%82%B2%E7%A0%94%E7%A9%B6%E5%9F%BA%E5%9C%B0" target="_blank" rel="noreferrer">百度</a>
+            <a href="https://baike.baidu.com/item/%E6%88%90%E9%83%BD%E5%A4%A7%E7%86%8A%E7%8C%AB%E7%B9%81%E8%82%B2%E7%A0%94%E7%A9%B6%E5%9F%BA%E5%9C%B0" target="_blank" rel="noreferrer">百度百科</a>
+            <a href="https://www.douyin.com/search/%E6%88%90%E9%83%BD%E5%A4%A7%E7%86%8A%E7%8C%AB%E7%B9%81%E8%82%B2%E7%A0%94%E7%A9%B6%E5%9F%BA%E5%9C%B0" target="_blank" rel="noreferrer">抖音</a>
+            <a href="https://search.bilibili.com/all?keyword=%E6%88%90%E9%83%BD%E5%A4%A7%E7%86%8A%E7%8C%AB%E7%B9%81%E8%82%B2%E7%A0%94%E7%A9%B6%E5%9F%BA%E5%9C%B0" target="_blank" rel="noreferrer">哔哩哔哩</a>
+            <a href="https://s.weibo.com/weibo?q=%E6%88%90%E9%83%BD%E5%A4%A7%E7%86%8A%E7%8C%AB%E7%B9%81%E8%82%B2%E7%A0%94%E7%A9%B6%E5%9F%BA%E5%9C%B0" target="_blank" rel="noreferrer">微博</a>
+          </div>
+        </article>
+        <article class="attraction-card">
+          <span class="tagline hot">🔥 热门核心景点</span>
+          <h3>武侯祠博物馆</h3>
+          <div class="meta">
+            <span>⭐ 4.6</span>
+            <span>📍 武侯区武侯祠大街231号</span>
+            <span>🕙 09:00-18:00</span>
+            <span>🎫 全价票约50元</span>
+          </div>
+          <p>三国文化的高浓缩现场。这里有真正能让人静下来走一圈的历史感，而不只是拍个照就离开。</p>
+          <div class="links">
+            <a href="https://www.baidu.com/s?wd=%E6%AD%A6%E4%BE%AF%E7%A5%A0%E5%8D%9A%E7%89%A9%E9%A6%86" target="_blank" rel="noreferrer">百度</a>
+            <a href="https://baike.baidu.com/item/%E6%AD%A6%E4%BE%AF%E7%A5%A0" target="_blank" rel="noreferrer">百度百科</a>
+            <a href="https://www.douyin.com/search/%E6%AD%A6%E4%BE%AF%E7%A5%A0" target="_blank" rel="noreferrer">抖音</a>
+            <a href="https://search.bilibili.com/all?keyword=%E6%AD%A6%E4%BE%AF%E7%A5%A0" target="_blank" rel="noreferrer">哔哩哔哩</a>
+            <a href="https://s.weibo.com/weibo?q=%E6%AD%A6%E4%BE%AF%E7%A5%A0" target="_blank" rel="noreferrer">微博</a>
+          </div>
+        </article>
+        <article class="attraction-card">
+          <span class="tagline hot">🔥 热门核心景点</span>
+          <h3>宽窄巷子</h3>
+          <div class="meta">
+            <span>⭐ 4.6</span>
+            <span>📍 青羊区宽巷子27号附近</span>
+            <span>🕙 全年全天开放</span>
+            <span>🎫 免费</span>
+          </div>
+          <p>最适合收尾的老街区。适合买伴手礼、边逛边吃、看灯光，不适合把整段黄金时间都耗在这里。</p>
+          <div class="links">
+            <a href="https://www.baidu.com/s?wd=%E5%AE%BD%E7%AA%84%E5%B7%B7%E5%AD%90" target="_blank" rel="noreferrer">百度</a>
+            <a href="https://baike.baidu.com/item/%E5%AE%BD%E7%AA%84%E5%B7%B7%E5%AD%90" target="_blank" rel="noreferrer">百度百科</a>
+            <a href="https://www.douyin.com/search/%E5%AE%BD%E7%AA%84%E5%B7%B7%E5%AD%90" target="_blank" rel="noreferrer">抖音</a>
+            <a href="https://search.bilibili.com/all?keyword=%E5%AE%BD%E7%AA%84%E5%B7%B7%E5%AD%90" target="_blank" rel="noreferrer">哔哩哔哩</a>
+            <a href="https://s.weibo.com/weibo?q=%E5%AE%BD%E7%AA%84%E5%B7%B7%E5%AD%90" target="_blank" rel="noreferrer">微博</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="niche" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>5. 小众多好评景点</h2>
+          <p>这 3 个地方的共同点是更接近成都真正的日常，不靠“必须打卡”支撑体验。</p>
+        </div>
+      </div>
+      <div class="attraction-grid">
+        <article class="attraction-card">
+          <span class="tagline niche">🌿 小众高口碑</span>
+          <h3>人民公园</h3>
+          <div class="meta">
+            <span>⭐ 4.6</span>
+            <span>📍 青羊区祠堂街9号</span>
+            <span>🕙 全年全天开放</span>
+            <span>🎫 免费</span>
+          </div>
+          <p>最能代表成都慢生活的一站。喝一杯盖碗茶，比再多看一个景点更能理解这座城市。</p>
+          <div class="links">
+            <a href="https://www.baidu.com/s?wd=%E6%88%90%E9%83%BD%E4%BA%BA%E6%B0%91%E5%85%AC%E5%9B%AD" target="_blank" rel="noreferrer">百度</a>
+            <a href="https://baike.baidu.com/item/%E4%BA%BA%E6%B0%91%E5%85%AC%E5%9B%AD" target="_blank" rel="noreferrer">百度百科</a>
+            <a href="https://www.douyin.com/search/%E6%88%90%E9%83%BD%E4%BA%BA%E6%B0%91%E5%85%AC%E5%9B%AD" target="_blank" rel="noreferrer">抖音</a>
+            <a href="https://search.bilibili.com/all?keyword=%E6%88%90%E9%83%BD%E4%BA%BA%E6%B0%91%E5%85%AC%E5%9B%AD" target="_blank" rel="noreferrer">哔哩哔哩</a>
+            <a href="https://s.weibo.com/weibo?q=%E6%88%90%E9%83%BD%E4%BA%BA%E6%B0%91%E5%85%AC%E5%9B%AD" target="_blank" rel="noreferrer">微博</a>
+          </div>
+        </article>
+        <article class="attraction-card">
+          <span class="tagline niche">🌿 小众高口碑</span>
+          <h3>东郊记忆</h3>
+          <div class="meta">
+            <span>⭐ 4.5</span>
+            <span>📍 成华区建设南路中段4号</span>
+            <span>🕙 全年全天开放</span>
+            <span>🎫 免费</span>
+          </div>
+          <p>老工业厂区更新成的文艺街区。适合拍照、看展、喝咖啡，也适合把旅行状态从“赶景点”切换成“逛城市”。</p>
+          <div class="links">
+            <a href="https://www.baidu.com/s?wd=%E4%B8%9C%E9%83%8A%E8%AE%B0%E5%BF%86" target="_blank" rel="noreferrer">百度</a>
+            <a href="https://baike.baidu.com/item/%E4%B8%9C%E9%83%8A%E8%AE%B0%E5%BF%86" target="_blank" rel="noreferrer">百度百科</a>
+            <a href="https://www.douyin.com/search/%E4%B8%9C%E9%83%8A%E8%AE%B0%E5%BF%86" target="_blank" rel="noreferrer">抖音</a>
+            <a href="https://search.bilibili.com/all?keyword=%E4%B8%9C%E9%83%8A%E8%AE%B0%E5%BF%86" target="_blank" rel="noreferrer">哔哩哔哩</a>
+            <a href="https://s.weibo.com/weibo?q=%E4%B8%9C%E9%83%8A%E8%AE%B0%E5%BF%86" target="_blank" rel="noreferrer">微博</a>
+          </div>
+        </article>
+        <article class="attraction-card">
+          <span class="tagline niche">🌿 小众高口碑</span>
+          <h3>望江楼公园</h3>
+          <div class="meta">
+            <span>⭐ 4.6</span>
+            <span>📍 武侯区望江路30号</span>
+            <span>🕙 以现场公告为准，常见文物区开放约 09:00-18:00</span>
+            <span>🎫 园林区免费，文物区约20元</span>
+          </div>
+          <p>竹林、楼阁、园路和水边光影都很漂亮，适合把第二天下午从“历史”平滑过渡到“松弛”。</p>
+          <div class="links">
+            <a href="https://www.baidu.com/s?wd=%E6%9C%9B%E6%B1%9F%E6%A5%BC%E5%85%AC%E5%9B%AD" target="_blank" rel="noreferrer">百度</a>
+            <a href="https://baike.baidu.com/item/%E6%9C%9B%E6%B1%9F%E6%A5%BC" target="_blank" rel="noreferrer">百度百科</a>
+            <a href="https://www.douyin.com/search/%E6%9C%9B%E6%B1%9F%E6%A5%BC%E5%85%AC%E5%9B%AD" target="_blank" rel="noreferrer">抖音</a>
+            <a href="https://search.bilibili.com/all?keyword=%E6%9C%9B%E6%B1%9F%E6%A5%BC%E5%85%AC%E5%9B%AD" target="_blank" rel="noreferrer">哔哩哔哩</a>
+            <a href="https://s.weibo.com/weibo?q=%E6%9C%9B%E6%B1%9F%E6%A5%BC%E5%85%AC%E5%9B%AD" target="_blank" rel="noreferrer">微博</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="food" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>6. 详细的本地美食地图</h2>
+          <p>成都的关键不是吃得多，而是每一餐别撞类型。胃口留白比盲目满配更重要。</p>
+        </div>
+      </div>
+      <div class="food-grid">
+        <article class="food-card">
+          <strong>火锅线</strong>
+          <span>第二天晚上安排最合理。选一家评价稳定的老火锅或牛油锅，第一次来不建议一开始就超辣，鸳鸯锅是理性选择。</span>
+        </article>
+        <article class="food-card">
+          <strong>小吃线</strong>
+          <span>甜水面、钟水饺、龙抄手、红糖糍粑、锅盔、赖汤圆可以穿插在白天，不必挤在一顿解决。</span>
+        </article>
+        <article class="food-card">
+          <strong>街区优先级</strong>
+          <span>春熙路和太古里适合综合觅食，建设路适合夜宵，奎星楼街适合边逛边吃，玉林适合夜里坐下来慢吃慢喝。</span>
+        </article>
+        <article class="food-card">
+          <strong>茶馆体验</strong>
+          <span>人民公园鹤鸣茶社这类地方，不只是“喝茶”，而是把成都慢生活补齐的一块。建议至少坐 40 分钟。</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="stay" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>7. 详细的住宿推荐</h2>
+          <p>三天两夜不要换酒店。住对位置，比住得豪华更重要。</p>
+        </div>
+      </div>
+      <div class="stay-grid">
+        <article class="stay-card">
+          <strong>春熙路 / 太古里</strong>
+          <span>第一次来成都最通用。晚上吃喝方便，打车和地铁都好接，适合把夜生活和购物一起解决。</span>
+        </article>
+        <article class="stay-card">
+          <strong>天府广场</strong>
+          <span>交通转乘效率高，去熊猫基地、宽窄巷子、人民公园都比较均衡。适合更重视通勤效率的人。</span>
+        </article>
+        <article class="stay-card">
+          <strong>建设路 / 东郊记忆周边</strong>
+          <span>更偏年轻化和夜生活导向，吃宵夜方便，但如果主要按这份路线走，综合均衡性略逊于市中心。</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="transport" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>8. 详细的交通指南</h2>
+          <p>成都这类城市最怕的不是路远，而是把时间估得太乐观。</p>
+        </div>
+      </div>
+      <div class="split">
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>到达点</th>
+              <th>建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>成都东站</td>
+              <td>最省心，高铁抵达后转地铁去市区快，适合作为三天两夜首选进出点。</td>
+            </tr>
+            <tr>
+              <td>双流机场</td>
+              <td>进城相对更近，适合短途城市游，打车和地铁的整体体感都更轻松。</td>
+            </tr>
+            <tr>
+              <td>天府机场</td>
+              <td>距离更远，返程务必预留更大缓冲，尤其晚高峰时段不要卡点出发。</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>市内移动</th>
+              <th>建议</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>地铁</td>
+              <td>负责主通勤，稳定、省心，适合大段移动。</td>
+            </tr>
+            <tr>
+              <td>打车</td>
+              <td>负责地铁站到景点最后一段，尤其熊猫基地早班和夜里回酒店很实用。</td>
+            </tr>
+            <tr>
+              <td>步行</td>
+              <td>景区内部和人民公园、宽窄巷子、东郊记忆一类街区主要靠走，鞋一定要舒服。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="safety" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>9. 详细的文化礼仪与安全</h2>
+          <p>成都整体友好，但轻松不等于可以毫无边界感。</p>
+        </div>
+      </div>
+      <div class="tips-grid">
+        <article class="tips-card">
+          <strong>景区礼仪</strong>
+          <span>武侯祠、望江楼这类文化园林里别高声外放。红墙和古建很适合拍照，但别为了角度挡别人通行。</span>
+        </article>
+        <article class="tips-card">
+          <strong>茶馆礼仪</strong>
+          <span>茶馆不是快闪打卡位。点了茶就坐稳一点，不要只拍几张照片就长时间占桌。</span>
+        </article>
+        <article class="tips-card">
+          <strong>饮食安全</strong>
+          <span>平时不吃辣的人要主动说少辣或微辣。连吃两顿重口很容易影响第二天状态。</span>
+        </article>
+        <article class="tips-card">
+          <strong>夜间安全</strong>
+          <span>夜生活区人多但总体安全，和所有城市一样，手机和包不要离身，深夜返程尽量直接回酒店。</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="checklist" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>10. 实用信息清单</h2>
+          <p>出发前把这些准备好，行程会顺很多。</p>
+        </div>
+      </div>
+      <div class="split">
+        <div class="note-box">
+          <strong>出发前</strong>
+          <ul class="list">
+            <li>提前确认熊猫基地预约和开放信息。</li>
+            <li>酒店尽量定在春熙路、太古里或天府广场附近。</li>
+            <li>把返程点写清楚，天府机场和成都东站不是一回事。</li>
+          </ul>
+        </div>
+        <div class="note-box">
+          <strong>随身携带</strong>
+          <ul class="list">
+            <li>身份证、充电宝、轻便雨伞、纸巾、肠胃药。</li>
+            <li>一双适合暴走的鞋，比拍照好看的鞋更重要。</li>
+            <li>背一个容量刚好的包，别大包小包拖慢逛街体验。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="budget" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>11. 预算规划</h2>
+          <p>预算最大变量还是住宿和晚餐。景点门票本身并不算夸张。</p>
+        </div>
+      </div>
+      <table class="budget-table">
+        <thead>
+          <tr>
+            <th>档位</th>
+            <th>住宿 / 2 晚</th>
+            <th>餐饮</th>
+            <th>门票 + 市内交通</th>
+            <th>参考总计 / 人</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>经济</td>
+            <td>300-500 元</td>
+            <td>250-350 元</td>
+            <td>180-260 元</td>
+            <td>730-1110 元</td>
+          </tr>
+          <tr>
+            <td>舒适</td>
+            <td>700-1200 元</td>
+            <td>400-600 元</td>
+            <td>220-320 元</td>
+            <td>1320-2120 元</td>
+          </tr>
+          <tr>
+            <td>高端</td>
+            <td>1800 元以上</td>
+            <td>700 元以上</td>
+            <td>300-500 元</td>
+            <td>2800 元以上</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="photo" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>12. 拍照打卡攻略</h2>
+          <p>成都拍照最怕“全都一个味”。这条线故意把几种完全不同的画面类型拆开了。</p>
+        </div>
+      </div>
+      <div class="photo-grid">
+        <article class="photo-card" style="--photo-bg: linear-gradient(135deg, #5f6b3c, #a7b95a);">
+          <strong>熊猫基地</strong>
+          <span>抢早拍活动状态，长焦更稳，不建议中午才去。</span>
+        </article>
+        <article class="photo-card" style="--photo-bg: linear-gradient(135deg, #7a2d19, #d88f2d);">
+          <strong>武侯祠红墙</strong>
+          <span>穿纯色衣服最出片，上午和傍晚的侧光都很好。</span>
+        </article>
+        <article class="photo-card" style="--photo-bg: linear-gradient(135deg, #37464d, #9b4f32);">
+          <strong>东郊记忆</strong>
+          <span>工业风和街拍最适合，黄昏后灯光层次更丰富。</span>
+        </article>
+        <article class="photo-card" style="--photo-bg: linear-gradient(135deg, #315f58, #889b74);">
+          <strong>望江楼 / 人民公园</strong>
+          <span>竹影、茶桌、人像都很适合拍氛围照，不用堆太多动作。</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="pitfalls" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>13. 详细的避坑指南</h2>
+          <p>这些问题不是大坑，但很容易把一次短途旅行拖得又累又乱。</p>
+        </div>
+      </div>
+      <div class="tips-grid">
+        <article class="tips-card">
+          <strong>别把熊猫基地放下午</strong>
+          <span>大熊猫中午后活跃度明显下降，观感差距会很直接。</span>
+        </article>
+        <article class="tips-card">
+          <strong>别把宽窄巷子当唯一重点</strong>
+          <span>它适合收尾、散步和买伴手礼，不适合吃掉你最黄金的整天。</span>
+        </article>
+        <article class="tips-card">
+          <strong>别连吃两顿重辣火锅</strong>
+          <span>成都吃得多不等于非得硬顶，身体状态崩了行程就废一半。</span>
+        </article>
+        <article class="tips-card">
+          <strong>别低估通勤缓冲</strong>
+          <span>尤其返程去天府机场，宁可早到也不要赌路况和换乘效率。</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="sustainable" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>14. 可持续旅游建议</h2>
+          <p>成都很适合轻量旅行，不需要靠大量一次性消费堆体验。</p>
+        </div>
+      </div>
+      <div class="tips-grid">
+        <article class="tips-card">
+          <strong>优先地铁 + 步行</strong>
+          <span>市区大部分路线完全能靠公共交通解决，减少高峰期空驶打车。</span>
+        </article>
+        <article class="tips-card">
+          <strong>自带水杯和小袋子</strong>
+          <span>减少景区和老街里重复购买一次性用品，也更轻便。</span>
+        </article>
+        <article class="tips-card">
+          <strong>在地消费</strong>
+          <span>伴手礼优先选本地特色吃食和小店，不用一味追求大路货。</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="custom" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>15. 个性化定制建议</h2>
+          <p>同样是三天两夜，重点不同，成都也可以玩成完全不同的版本。</p>
+        </div>
+      </div>
+      <div class="custom-grid">
+        <article class="custom-card">
+          <strong>情侣版</strong>
+          <span>保留熊猫基地，把东郊记忆和望江楼的停留时间拉长，晚上加一顿氛围餐或酒馆。</span>
+        </article>
+        <article class="custom-card">
+          <strong>朋友结伴版</strong>
+          <span>人民公园可缩短，建设路、玉林和九眼桥的夜生活比例可以更高。</span>
+        </article>
+        <article class="custom-card">
+          <strong>带长辈版</strong>
+          <span>减少晚上折腾，把重点放在熊猫基地、武侯祠、人民公园，整体会更舒服。</span>
+        </article>
+        <article class="custom-card">
+          <strong>美食优先版</strong>
+          <span>景点不再加量，而是把每个时段的餐饮安排得更精准，避免景点多了反而吃不下。</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="culture" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>16. 详细的风俗文化与人文景观</h2>
+          <p>成都真正打动人的，往往不是“看到了什么”，而是“你愿意在这里停下来”。</p>
+        </div>
+      </div>
+      <div class="culture-grid">
+        <article class="culture-card">
+          <strong>茶馆文化</strong>
+          <span>成都的茶馆不是打卡摆设，而是城市交流的天然现场。坐下来，就是理解成都的一种方式。</span>
+        </article>
+        <article class="culture-card">
+          <strong>三国记忆</strong>
+          <span>武侯祠把成都和三国叙事稳稳绑在一起，这座城市的历史辨识度非常高。</span>
+        </article>
+        <article class="culture-card">
+          <strong>城市松弛感</strong>
+          <span>人民公园、街头巷尾、夜里慢慢散的人群，共同构成成都最难复制的气质。</span>
+        </article>
+        <article class="culture-card">
+          <strong>新旧并置</strong>
+          <span>宽窄巷子的老街、东郊记忆的工业遗存和太古里的商业界面，说明成都并不是单一审美的城市。</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="highlights" class="section reveal">
+      <div class="section-header">
+        <div>
+          <h2>17. 详细的内容亮点</h2>
+          <p>这份行程最强的地方，不在景点多，而在每一天都有明确人格。</p>
+        </div>
+      </div>
+      <div class="highlight-grid">
+        <article class="highlight-card">
+          <strong>路线顺</strong>
+          <span>三天分别处理熊猫、文化园林、慢生活老街，几乎没有大范围反复横跳。</span>
+        </article>
+        <article class="highlight-card">
+          <strong>体验层次完整</strong>
+          <span>看熊猫的兴奋、看红墙竹影的静气、喝茶和吃夜宵的松弛，情绪曲线很完整。</span>
+        </article>
+        <article class="highlight-card">
+          <strong>适合第一次来</strong>
+          <span>核心辨识度都在，又没有压成纯游客清单，执行门槛低。</span>
+        </article>
+        <article class="highlight-card">
+          <strong>可复制性高</strong>
+          <span>住市区、三天两夜、地铁加打车，这套思路能直接抄，也容易按个人偏好微调。</span>
+        </article>
+      </div>
+      <div class="sources" aria-label="参考链接">
+        <a href="https://www.panda.org.cn/cn/service/opentime/" target="_blank" rel="noreferrer">熊猫基地开放时间</a>
+        <a href="https://www.panda.org.cn/cn/service/ticket/" target="_blank" rel="noreferrer">熊猫基地票务</a>
+        <a href="https://www.wuhouci.net.cn/" target="_blank" rel="noreferrer">武侯祠官网</a>
+        <a href="https://you.ctrip.com/sight/chengdu104/141475.html" target="_blank" rel="noreferrer">宽窄巷子攻略</a>
+        <a href="https://you.ctrip.com/sight/chengdu104/1475942.html" target="_blank" rel="noreferrer">人民公园攻略</a>
+        <a href="https://you.ctrip.com/sight/chengdu104/13445257.html" target="_blank" rel="noreferrer">东郊记忆攻略</a>
+        <a href="https://you.ctrip.com/sight/chengdu104/4591.html" target="_blank" rel="noreferrer">望江楼公园攻略</a>
+      </div>
+    </section>
+
+    <footer class="footer reveal">
+      <strong>使用说明</strong>
+      <p>本页按 `2026-04-23` 可查公开信息整理。景区开放时间、票务、预约和限流规则可能临时调整，出发当天以官方公告为准。建议直接保存这个 HTML 文件，断网也能查看。</p>
+    </footer>
+  </div>
+
+  <script>
+    const tabs = Array.from(document.querySelectorAll(".tab"));
+    const panels = Array.from(document.querySelectorAll(".tab-panel"));
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetId = tab.getAttribute("aria-controls");
+        tabs.forEach((item) => {
+          const active = item === tab;
+          item.classList.toggle("active", active);
+          item.setAttribute("aria-selected", String(active));
+        });
+        panels.forEach((panel) => {
+          panel.classList.toggle("active", panel.id === targetId);
+        });
+      });
+    });
+
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 });
+
+    reveals.forEach((section) => observer.observe(section));
+
+    const navLinks = Array.from(document.querySelectorAll(".nav a"));
+    const sections = navLinks
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          const match = link.getAttribute("href") === "#" + entry.target.id;
+          link.classList.toggle("active", match);
+        });
+      });
+    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
+
+    sections.forEach((section) => spy.observe(section));
+  </script>
+</body>
+</html>
